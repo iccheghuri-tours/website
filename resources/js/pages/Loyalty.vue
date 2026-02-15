@@ -49,22 +49,24 @@ const toggleCard = () => {
     </div>
 
     <!-- Tabs -->
-    <div class="flex w-full max-w-md bg-slate-800 p-1 rounded-xl">
-      <button
-        class="flex-1 py-2 font-semibold text-sm text-slate-400 rounded-lg transition-all duration-200"
-        :class="activeTab === 'points' ? 'bg-blue-500 text-white shadow-md' : ''"
-        @click="activeTab = 'points'"
-      >
-        Card Points
-      </button>
-      <button
-        class="flex-1 py-2 font-semibold text-sm text-slate-400 rounded-lg transition-all duration-200"
-        :class="activeTab === 'benefits' ? 'bg-blue-500 text-white shadow-md' : ''"
-        @click="activeTab = 'benefits'"
-      >
-        Benefits
-      </button>
-    </div>
+<!-- Tabs -->
+<div class="flex w-full max-w-md bg-slate-800 p-2 rounded-xl sticky top-0 z-20">
+  <button
+    class="flex-1 py-2 font-semibold text-sm text-slate-400 rounded-lg transition-all duration-200"
+    :class="activeTab === 'points' ? 'bg-blue-500 text-white shadow-md' : ''"
+    @click="activeTab = 'points'"
+  >
+    Card Points
+  </button>
+  <button
+    class="flex-1 py-2 font-semibold text-sm text-slate-400 rounded-lg transition-all duration-200"
+    :class="activeTab === 'benefits' ? 'bg-blue-500 text-white shadow-md' : ''"
+    @click="activeTab = 'benefits'"
+  >
+    Benefits
+  </button>
+</div>
+
 
     <!-- Deals Sections -->
     <div v-if="activeTab === 'points'" class="w-full max-w-md mt-2 animate-slideUp z-10">
