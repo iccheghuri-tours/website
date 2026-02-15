@@ -1,77 +1,48 @@
+<template>
+  <div 
+    @click="$emit('view-details')"
+    class="group relative flex items-center gap-4 p-3 mb-3 rounded-2xl 
+           bg-zinc-900/50 border border-white/5 backdrop-blur-sm
+           active:scale-[0.98] active:bg-zinc-800/80 transition-all duration-200"
+  >
+    <!-- Image -->
+    <div class="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-xl border border-white/10">
+      <img 
+        :src="image" 
+        :alt="name"
+        class="h-full w-full object-cover"
+      />
+    </div>
+
+    <!-- Text -->
+    <div class="flex-1 min-w-0">
+      <h3 class="text-sm font-semibold text-white truncate">
+        {{ name }}
+      </h3>
+      <p class="text-xs text-green-400 line-clamp-1">
+        {{ discount }}% OFF
+      </p>
+      <p class="text-xs text-zinc-400 line-clamp-1">
+        {{ details }}
+      </p>
+    </div>
+
+    <!-- Minimal Button -->
+    <button 
+      class="text-xs font-medium text-blue-400 hover:text-blue-500 transition-colors underline"
+    >
+      See Details
+    </button>
+  </div>
+</template>
+
 <script setup>
 defineProps({
   name: String,
   image: String,
-  details: String
+  details: String,
+  discount: String
 })
+
+const emit = defineEmits(['view-details'])
 </script>
-
-<template>
-  <div class="benefit-card">
-    <h3 class="benefit-name">{{ name }}</h3>
-
-    <div class="benefit-content">
-      <div class="logo-wrapper">
-        <img :src="image" :alt="name" class="brand-logo" />
-      </div>
-      <p class="benefit-details">
-        {{ details }}
-      </p>
-    </div>
-  </div>
-</template>
-
-<style scoped>
-/* Mobile-first Dark Theme */
-.benefit-card {
-  background-color: #1e1e1e;
-  border: 1px solid #333;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 12px;
-  color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.benefit-name {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #999;
-  margin: 0 0 10px 0;
-  border-bottom: 1px solid #333;
-  padding-bottom: 8px;
-}
-
-.benefit-content {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.logo-wrapper {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  background-color: #2a2a2a;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.brand-logo {
-  max-width: 80%;
-  max-height: 80%;
-  object-fit: contain;
-}
-
-.benefit-details {
-  font-size: 1rem;
-  line-height: 1.4;
-  margin: 0;
-  color: #e0e0e0;
-  font-weight: 500;
-}
-</style>

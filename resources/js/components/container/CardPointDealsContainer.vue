@@ -9,6 +9,10 @@ defineProps({
     userPoints:{
         type: Number,
         required: true
+    },
+    name: {
+        type: String,
+        required: true
     }
 });
     
@@ -22,6 +26,7 @@ defineProps({
         :details="list.details" 
         :points="list.points_required"
         :userPoints="userPoints"
+        :name="name"
         />
   </div>
         

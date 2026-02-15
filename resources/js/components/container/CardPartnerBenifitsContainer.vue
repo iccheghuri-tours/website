@@ -18,6 +18,7 @@ defineProps({
             :name="list.name" 
             :image="list.image" 
             :details="list.details"
+            :discount="list.discount_percentage"
         />
     </div>
 

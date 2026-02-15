@@ -70,7 +70,7 @@ const toggleCard = () => {
 
     <!-- Deals Sections -->
     <div v-if="activeTab === 'points'" class="w-full max-w-md mt-2 animate-slideUp z-10">
-      <CardPointDealsContainer :lists="pointDeals" :userPoints="user.points" />
+      <CardPointDealsContainer :lists="pointDeals" :userPoints="user.points" :name="user.name" />
     </div>
 
     <div v-if="activeTab === 'benefits'" class="w-full max-w-md mt-2 animate-slideUp z-10">

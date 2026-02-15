@@ -1,9 +1,12 @@
 <script setup>
-import { computed } from 'vue';
+import { computed,ref } from 'vue';
+import BottomSheet from '../mix/BottomSheet.vue';
+
 
 const props = defineProps({
   title: String,
   details: String,
+  name: String,
   points: {
     type: Number,
     default: 100
@@ -19,15 +22,28 @@ const emit = defineEmits(['claim']);
 // Logic to determine if the user can afford the claim
 const isLocked = computed(() => props.userPoints < props.points);
 
-const handleClaim = () => {
-  if (!isLocked.value) {
-    emit('claim');
-  }
-};
+// const handleClaim = () => {
+//   if (!isLocked.value) {
+//     emit('claim');
+//   }
+// };
+
+const isSheetOpen = ref(false);
+const openSheet = ()=>{
+    isSheetOpen.value = true;
+
+}
+const closeSheet = ()=>{
+    isSheetOpen.value = false;
+
+}
+
+
+
 </script>
 
 <template>
-  <div class="list-item" :class="{ 'item-locked': isLocked }">
+  <div class="list-item" :class="{ 'item-locked': isLocked } " >
     <div class="content">
       <h3 class="title">{{ title || 'Task Achievement' }}</h3>
       <p class="details">{{ details || 'Complete the daily challenge to earn rewards' }}</p>
@@ -37,12 +53,16 @@ const handleClaim = () => {
       class="point-button" 
       :class="{ 'is-disabled': isLocked }"
       :disabled="isLocked"
-      @click="handleClaim"
+      @click="openSheet()"
     >
       <span class="amount">{{ points }}</span>
       <span class="label">PTS</span>
     </button>
   </div>
+  <BottomSheet :show="isSheetOpen" @close="isSheetOpen = false" :name="name">
+      <h2 class="text-lg font-bold">{{ title }}</h2>
+      <p>Congratulations. You are eligible for this offer. Please notify the agent of iccheghuri before your next booking to get this offer. </p>
+    </BottomSheet>
 </template>
 
 <style scoped>
