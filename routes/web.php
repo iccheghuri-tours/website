@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoyaltiController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -15,3 +16,6 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/settings.php';
+
+
+Route::get('/points/{slug}', [LoyaltiController::class, 'index']);

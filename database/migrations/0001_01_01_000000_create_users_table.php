@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->bigInteger('points')->default(0);
+            $table->string('phone')->nullable();
+            $table->string('slug')->unique();
+            $table->string('image')->default("https://picsum.photos/300");
             $table->rememberToken();
             $table->timestamps();
         });
