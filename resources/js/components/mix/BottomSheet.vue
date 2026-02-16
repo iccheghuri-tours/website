@@ -5,20 +5,20 @@
         v-if="show && !isSheetVisible" 
         class="fixed inset-0 z-[70] flex items-center justify-center p-6"
       >
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+        <div class="absolute inset-0 bg-white/60 dark:bg-black/80 backdrop-blur-md"></div>
         
         <div class="relative flex flex-col items-center text-center">
           <div class="relative mb-6">
             <div class="absolute inset-0 bg-amber-500/20 blur-3xl rounded-full animate-pulse"></div>
-            <div class="relative w-24 h-24 bg-gradient-to-tr from-zinc-800 to-zinc-700 border border-zinc-600 rounded-full flex items-center justify-center shadow-2xl">
+            <div class="relative w-24 h-24 bg-gradient-to-tr from-slate-100 to-white dark:from-zinc-800 dark:to-zinc-700 border border-slate-200 dark:border-zinc-600 rounded-full flex items-center justify-center shadow-2xl">
               <span class="text-5xl drop-shadow-lg">✨</span>
             </div>
           </div>
           
-          <h2 class="text-zinc-500 text-sm font-black uppercase tracking-[0.3em] mb-2 animate-in fade-in slide-in-from-bottom-2">
+          <h2 class="text-slate-500 dark:text-zinc-500 text-sm font-black uppercase tracking-[0.3em] mb-2 animate-in fade-in slide-in-from-bottom-2">
             Congratulations!  
           </h2>
-          <h1 class="text-white text-4xl font-black tracking-tight drop-shadow-sm">
+          <h1 class="text-slate-900 dark:text-white text-4xl font-black tracking-tight drop-shadow-sm">
             {{name}}
           </h1>
           <div class="mt-4 h-1 w-12 bg-amber-500 rounded-full"></div>
@@ -35,10 +35,10 @@
 
         <Transition name="sheet-slide" appear>
           <div 
-            class="relative w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-t-[2.5rem] sm:rounded-[3rem] shadow-2xl overflow-hidden"
+            class="relative w-full max-w-lg bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-t-[2.5rem] sm:rounded-[3rem] shadow-2xl overflow-hidden"
           >
             <div class="flex justify-center pt-5">
-              <div class="w-10 h-1.5 bg-zinc-800 rounded-full"></div>
+              <div class="w-10 h-1.5 bg-slate-200 dark:bg-zinc-800 rounded-full"></div>
             </div>
 
             <div class="px-8 pb-10 pt-4 overflow-y-auto max-h-[85vh]">
@@ -47,7 +47,7 @@
               </div>
               
               <button 
-                class="w-full py-4 bg-white hover:bg-zinc-200 text-black font-bold rounded-[1.5rem] transition-all active:scale-[0.97] shadow-lg shadow-white/5"
+                class="w-full py-4 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-zinc-200 text-white dark:text-black font-bold rounded-[1.5rem] transition-all active:scale-[0.97] shadow-lg shadow-slate-200 dark:shadow-white/5"
                 @click="handleClose"
               >
                 Understand
@@ -74,12 +74,10 @@ const isSheetVisible = ref(false);
 
 watch(() => props.show, (newVal) => {
   if (newVal) {
-    // Show Alert first, then wait to show sheet
     isSheetVisible.value = false;
-    
     setTimeout(() => {
       isSheetVisible.value = true;
-    }, 2000); // Duration of the alert before sheet appears
+    }, 2000); 
   } else {
     isSheetVisible.value = false;
   }

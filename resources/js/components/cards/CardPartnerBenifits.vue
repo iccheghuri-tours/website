@@ -31,11 +31,11 @@ const closeSheet = ()=>{
   <div 
     @click="openSheet()"
     class="group relative flex items-center gap-4 p-3 mb-3 rounded-2xl 
-           bg-zinc-900/50 border border-white/5 backdrop-blur-sm
-           active:scale-[0.98] active:bg-zinc-800/80 transition-all duration-200"
+           bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-white/5 backdrop-blur-sm
+           shadow-sm dark:shadow-none
+           active:scale-[0.98] active:bg-slate-50 dark:active:bg-zinc-800/80 transition-all duration-200"
   >
-    <!-- Image -->
-    <div class="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-xl border border-white/10">
+    <div class="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-xl border border-slate-100 dark:border-white/10">
       <img 
         :src="image" 
         :alt="name"
@@ -43,24 +43,22 @@ const closeSheet = ()=>{
       />
     </div>
 
-    <!-- Text -->
     <div class="flex-1 min-w-0">
-      <h3 class="text-sm font-semibold text-white truncate">
+      <h3 class="text-sm font-semibold text-slate-900 dark:text-white truncate">
         {{ name }}
       </h3>
-      <p class="text-xs text-green-400 line-clamp-1">
+      <p class="text-xs text-emerald-600 dark:text-green-400 font-medium line-clamp-1">
         {{ discount }}% OFF
       </p>
-      <p class="text-xs text-zinc-400 line-clamp-1">
+      <p class="text-[11px] text-slate-500 dark:text-zinc-400 line-clamp-1">
         {{ details }}
       </p>
     </div>
 
-    <!-- Minimal Button -->
     <button 
-      class="text-xs font-medium text-blue-400 hover:text-blue-500 transition-colors underline"
+      class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors underline decoration-blue-600/30 dark:decoration-blue-400/30"
     >
-      See Details
+      Details
     </button>
 
     <Details
@@ -76,4 +74,3 @@ const closeSheet = ()=>{
     />
   </div>
 </template>
-
