@@ -1,14 +1,11 @@
 <script setup>
 import { Icon } from '@iconify/vue';
+import logo from '@/assets/images/logo.png'
+
 defineProps({
   appName: {
     type: String,
     default: 'Iccheghuri Tours'
-  },
-  // Adding a prop for the logo in case you want to swap it later
-  logoUrl: {
-    type: String,
-    default: 'https://picsum.photos/seed/travel/64/64' 
   },
   isFullScreen: {
     type: Boolean,
@@ -21,62 +18,61 @@ defineProps({
   closeFullScreen: {
     type: Function,
     required: true
-}
+  }
 });
-
-
 </script>
 
 <template>
-  <header class=" top-4 w-full z-50 flex justify-center ">
+  <header
+    class="top-4 w-full z-[100] flex justify-center "
+  >
     <nav 
-      class="w-full max-w-md px-4 py-2 
-             bg-neutral-950/60 backdrop-blur-xl 
-             border border-white/10 rounded-full 
-             shadow-[0_8px_32px_rgba(0,0,0,0.5)]
-             flex items-center justify-between
-             transition-all duration-300 hover:border-white/20"
+      class="w-full max-w-md flex items-center justify-between
+             bg-neutral-900/70 backdrop-blur-md 
+             border border-white/10 rounded-2xl
+             py-2.5 px-3
+             shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_10px_30px_-10px_rgba(0,0,0,0.5)]
+             transition-all duration-300 ease-out
+             hover:border-white/20 hover:bg-neutral-900/80"
     >
       <div class="flex items-center gap-3">
-        <div class="relative w-10 h-10 overflow-hidden rounded-full border border-white/20">
-          <img 
-            :src="logoUrl" 
-            alt="Logo" 
-            class="w-full h-full object-cover"
-          />
+        <div class="relative flex items-center justify-center p-0.5 rounded-xl bg-gradient-to-br from-white/20 to-transparent">
+          <div class="w-9 h-9 overflow-hidden rounded-[10px] bg-neutral-800">
+            <img 
+              :src="logo" 
+              alt="Logo" 
+              class="w-full h-full object-cover"
+            />
+          </div>
         </div>
-        <span class="text-white font-semibold tracking-wide text-md">
-          {{ appName }}
-        </span>
+        
+        <div class="flex flex-col">
+          <span class="text-white text-sm font-bold tracking-tight leading-none">
+            {{ appName }}
+          </span>
+          <span class="text-[10px] text-white/40 font-medium uppercase tracking-widest mt-1">
+            Premium Travel
+          </span>
+        </div>
       </div>
 
-      <button  v-if="isFullScreen" class="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/70 transition-colors" @click="closeFullScreen">
-        <Icon icon="bi:arrows-angle-contract"  />     
-    </button>
-    <button v-else class="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/70 transition-colors" @click="toggleFullScreen">
-        <Icon icon="bi:arrows-angle-expand"/>     
-    </button>
+      <button 
+        v-if="isFullScreen" 
+        @click="closeFullScreen"
+        class="group p-2.5 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 active:scale-90 transition-all duration-200"
+        aria-label="Exit Fullscreen"
+      >
+        <Icon icon="bi:arrows-angle-contract" class="text-white/70 group-hover:text-white w-5 h-5" />      
+      </button>
+
+      <button 
+        v-else 
+        @click="toggleFullScreen"
+        class="group p-2.5 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 active:scale-90 transition-all duration-200"
+        aria-label="Enter Fullscreen"
+      >
+        <Icon icon="bi:arrows-angle-expand" class="text-white/70 group-hover:text-white w-5 h-5" />      
+      </button>
     </nav>
   </header>
 </template>
-
-<style scoped>
-header {
-  perspective: 1000px;
-}
-
-nav {
-  /* Subtle glow effect */
-  box-shadow: 0 0 15px -5px rgba(255, 255, 255, 0.1);
-}
-
-/* Smooth entry animation */
-header {
-  animation: slideDown 0.5s ease-out;
-}
-
-@keyframes slideDown {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-</style>

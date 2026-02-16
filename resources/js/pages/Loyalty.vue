@@ -87,16 +87,13 @@ function closeFullScreen() {
       >
         <div class="absolute w-full h-full backface-hidden">
           <CardFront 
-            :name="user.name" 
-            :phone="user.phone" 
-            :email="user.email" 
-            :points="user.points" 
+            :user="user",
+            :getRank="getRank"
           />
         </div>
         <div class="absolute w-full h-full backface-hidden rotate-y-180">
           <CardBack 
-            :logoText="'NEXUS'" 
-            :qrUrl="'https://facebook.com/trtajim' + user.id" 
+            :user="user"
           />
         </div>
       </div>
@@ -105,30 +102,32 @@ function closeFullScreen() {
     <!-- Tabs -->
 <!-- Tabs -->
 <div class="w-full max-w-md">
-  <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
-    <div class="flex items-center gap-4">
-      <div class="flex items-center gap-3">
-        <div class="text-blue-500/80">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-        <div class="text-2xl font-black text-white tabular-nums">
-          {{ user.completed_tours || 5}}
-        </div>
+  <div class="relative group overflow-hidden bg-zinc-950 border border-white/10 rounded-2xl p-4 flex items-center justify-between shadow-2xl">
+    
+    <div class="absolute -left-4 top-0 w-20 h-20 bg-blue-500/10 blur-3xl rounded-full group-hover:bg-blue-500/20 transition-colors duration-500"></div>
+
+    <div class="flex items-center gap-5 relative">
+      <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white/[0.03] border border-white/10 rounded-xl shadow-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
       </div>
 
-      <div class="h-8 w-[1px] bg-slate-700/50"></div>
+      <div class="h-10 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
 
-      <div>
-        <h4 class="text-white text-sm font-bold leading-none">Completed Tours</h4>
+      <div class="flex flex-col">
+        <span class="text-[10px] uppercase tracking-[0.15em] font-bold text-zinc-500 leading-none mb-1">Total Progress</span>
+        <h4 class="text-white text-sm font-semibold tracking-wide">Completed Tours</h4>
       </div>
     </div>
 
-    <div class="text-right">
-      <span class="block text-[10px] uppercase tracking-widest text-slate-500 font-bold leading-none">Rank</span>
-      <span class="text-s font-black text-indigo-400 uppercase">{{ getRank(user.completed_tours) }}</span>
+    <div class="relative">
+      <span class="text-4xl font-black text-white tabular-nums tracking-tighter">
+        {{ user.completed_tours || 5 }}
+      </span>
+      <div class="h-1 w-full bg-blue-500/30 rounded-full mt-1 blur-[1px]"></div>
     </div>
+
   </div>
 </div>
 

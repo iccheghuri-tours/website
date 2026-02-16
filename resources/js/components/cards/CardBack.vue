@@ -1,12 +1,8 @@
 <script setup>
 defineProps({
-  logoText: {
-    type: String,
-    default: 'NEXUS'
-  },
-  qrUrl: {
-    type: String,
-    default: 'https://example.com'
+  user: {
+    type: Array,
+    required: true
   }
 });
 
@@ -26,27 +22,27 @@ const qrCodeSrc = (url) => `https://api.qrserver.com/v1/create-qr-code/?size=150
             <div class="h-4 w-4 bg-emerald-400 rounded-full animate-pulse"></div>
           </div>
           <h1 class="text-2xl font-black italic tracking-tighter text-white">
-            {{ logoText }}<span class="text-emerald-400">.</span>
+            iccheghuri<span class="text-emerald-400">.</span>
           </h1>
         </div>
         <p class="text-[10px] text-slate-500 mt-2 uppercase tracking-widest font-medium">
-          Digital Rewards Member
+          Loyalty Card
         </p>
       </div>
 
       <div class="relative z-10 pl-6 flex flex-col items-center">
         <div class="bg-white p-2 rounded-xl shadow-inner shadow-black/20 transform rotate-3 hover:rotate-0 transition-transform duration-300">
           <img 
-            :src="qrCodeSrc(qrUrl)" 
+            :src="qrCodeSrc('https://iccheghuri.com/points/'+user.slug)" 
             alt="QR Code" 
             class="w-20 h-20"
           />
         </div>
-        <span class="text-[8px] text-slate-400 mt-2 font-mono uppercase">Scan to Verify</span>
+        <span class="text-[8px] text-slate-400 mt-2 font-mono uppercase">Scan For Details</span>
       </div>
 
       <div class="absolute bottom-4 left-8">
-         <p class="text-[9px] text-slate-600 font-mono">ID: #882-901-BETA</p>
+         <p class="text-[9px] text-slate-600 font-mono">ID: #{{ user.id }}</p>
       </div>
     </div>
   </div>

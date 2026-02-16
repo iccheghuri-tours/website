@@ -1,22 +1,16 @@
 <script setup>
 defineProps({
-  name: {
-    type: String,
-    default: 'Jane Doe'
+  user: {
+    type: Array,
+    required: true
   },
-  phone: {
-    type: String,
-    default: '+1 (555) 000-0000'
-  },
-  email: {
-    type: String,
-    default: 'hello@example.com'
-  },
-  points: {
-    type: Number,
-    default: 0
+  getRank: {
+    type: Function,
+    required: true
   }
 });
+
+
 </script>
 
 <template>
@@ -26,24 +20,22 @@ defineProps({
       <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/15 rounded-full blur-3xl"></div>
       
       <div class="relative z-10">
-        <div class="flex justify-between items-start mb-4">
-          <div class="h-9 w-9 bg-gradient-to-tr from-blue-400 to-emerald-400 rounded-lg flex items-center justify-center shadow-lg">
-            <span class="text-white font-bold text-sm">U</span>
-          </div>
+        <div class="flex justify-end items-start mb-3">
+          
           <div class="text-right">
-            <p class="text-[9px] uppercase tracking-[0.2em] text-slate-400 font-semibold">Member Status</p>
-            <p class="text-emerald-400 text-xs font-medium italic">Verified</p>
+            <p class="text-[9px] uppercase tracking-[0.2em] text-slate-400 font-semibold">Current Rank</p>
+            <p class="text-emerald-400 text-s font-medium ">{{ getRank(user.completed_tours) }}</p>
           </div>
         </div>
 
         <div class="mb-4">
-          <h2 class="text-xl font-bold text-white tracking-tight leading-tight">{{ name }}</h2>
+          <h2 class="text-xl font-bold text-white tracking-tight leading-tight">{{ user.name }}</h2>
           <div class="mt-1.5 space-y-0.5">
             <p class="text-slate-300 text-[10px] flex items-center gap-2">
-              <span class="opacity-50">📱</span> {{ phone }}
+              <span class="opacity-50">📱</span> {{ user.phone }}
             </p>
             <p class="text-slate-300 text-[10px] flex items-center gap-2">
-              <span class="opacity-50">✉️</span> {{ email }}
+              <span class="opacity-50">✉️</span> {{ user.email }}
             </p>
           </div>
         </div>
@@ -53,7 +45,7 @@ defineProps({
         <div>
           <p class="text-[9px] uppercase tracking-widest text-slate-500 font-bold">Total Balance</p>
           <p class="text-2xl font-mono font-bold text-white leading-none mt-1">
-            {{ points.toLocaleString() }} <span class="text-[10px] text-blue-400 font-sans tracking-normal align-middle ml-1">PTS</span>
+            {{ user.points.toLocaleString() }} <span class="text-[10px] text-blue-400 font-sans tracking-normal align-middle ml-1">POINTS</span>
           </p>
         </div>
         
