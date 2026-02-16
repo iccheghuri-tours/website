@@ -28,7 +28,7 @@ defineProps({
 </script>
 
 <template>
-  <header class="sticky top-4 w-full z-50 flex justify-center ">
+  <header class=" top-4 w-full z-50 flex justify-center ">
     <nav 
       class="w-full max-w-md px-4 py-2 
              bg-neutral-950/60 backdrop-blur-xl 
