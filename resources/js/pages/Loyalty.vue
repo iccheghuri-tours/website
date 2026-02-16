@@ -5,6 +5,7 @@ import CardBack from '@/components/cards/CardBack.vue';
 import { usePage } from '@inertiajs/vue3';
 import CardPartnerBenifitsContainer from '@/components/container/CardPartnerBenifitsContainer.vue';
 import CardPointDealsContainer from '@/components/container/CardPointDealsContainer.vue';
+import ToolBar from '@/components/mix/ToolBar.vue';
 
 const { props } = usePage();
 const user = props.user;
@@ -27,6 +28,7 @@ function getRank(count) {
 }
 
 const fullscreenEntered = ref(false);
+const shouldShowTopBar = ref(false);
 
 function goFullscreen() {
   const elem = document.documentElement;
@@ -34,13 +36,25 @@ function goFullscreen() {
   else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen(); // Safari
   else if (elem.msRequestFullscreen) elem.msRequestFullscreen(); // IE/Edge
   fullscreenEntered.value = true;
+  shouldShowTopBar.value = true;
 }
 
-/*onMounted(() => {
+function closeFullScreen() {
+  if (document.exitFullscreen) document.exitFullscreen();
+  else if (document.webkitExitFullscreen) document.webkitExitFullscreen(); // Safari
+  else if (document.msExitFullscreen) document.msExitFullscreen(); // IE/Edge
+  shouldShowTopBar.value = false;
+}
+
+onMounted(() => {
   document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement) fullscreenEntered.value = false;
+    if (!document.fullscreenElement) {
+      /*fullscreenEntered.value = false;*/
+      shouldShowTopBar.value = false;
+    }
   });
-});*/
+});
+
 </script>
 
 <template>
@@ -60,9 +74,11 @@ function goFullscreen() {
 </div>
   <div class="flex flex-col items-center w-full p-4">
 
+    <!-- toolbar -->
+    <ToolBar v-if="fullscreenEntered" :is-full-screen="shouldShowTopBar" :toggle-full-screen="goFullscreen" :close-full-screen="closeFullScreen"/>
     <!-- Card -->
     <div 
-      class="w-full max-w-md h-65 perspective cursor-pointer mx-auto" 
+      class="w-full max-w-md h-65 perspective cursor-pointer mx-auto mt-3" 
       @click="toggleCard"
     >
       <div 
