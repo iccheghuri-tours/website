@@ -27,39 +27,39 @@ function getRank(count) {
   if (count >= 1) return 'পথিক';
 }
 
-const fullscreenEntered = ref(false);
-const shouldShowTopBar = ref(false);
+const isAlertShown = ref(false);
+const isFullScreen = ref(false);
 
 function goFullscreen() {
   const elem = document.documentElement;
   if (elem.requestFullscreen) elem.requestFullscreen();
   else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen(); // Safari
   else if (elem.msRequestFullscreen) elem.msRequestFullscreen(); // IE/Edge
-  fullscreenEntered.value = true;
-  shouldShowTopBar.value = true;
+  isAlertShown.value = true;
+  isFullScreen.value = true;
 }
 
 function closeFullScreen() {
   if (document.exitFullscreen) document.exitFullscreen();
   else if (document.webkitExitFullscreen) document.webkitExitFullscreen(); // Safari
   else if (document.msExitFullscreen) document.msExitFullscreen(); // IE/Edge
-  shouldShowTopBar.value = false;
+  isFullScreen.value = false;
 }
 
-onMounted(() => {
+/*onMounted(() => {
   document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement) {
-      /*fullscreenEntered.value = false;*/
-      shouldShowTopBar.value = false;
+      isAlertShown.value = false;
+      isFullScreen.value = false;
     }
   });
-});
+});*/
 
 </script>
 
 <template>
   
-       <div v-if="!fullscreenEntered" class="fixed inset-0 bg-black/80 backdrop-blur-md flex justify-center items-center z-50">
+       <div v-if="!isAlertShown" class="fixed inset-0 bg-black/80 backdrop-blur-md flex justify-center items-center z-50">
   <div class="bg-zinc-900/90 border border-white/10 shadow-2xl rounded-3xl p-8 max-w-xs w-full text-center">
     <p class="text-zinc-100 mb-8 text-xl font-semibold tracking-tight">
       Please Enter Fullscreen Mode
@@ -75,7 +75,7 @@ onMounted(() => {
   <div class="flex flex-col items-center w-full p-4">
 
     <!-- toolbar -->
-    <ToolBar v-if="fullscreenEntered" :is-full-screen="shouldShowTopBar" :toggle-full-screen="goFullscreen" :close-full-screen="closeFullScreen"/>
+    <ToolBar v-if="isAlertShown" :is-full-screen="isFullScreen" :toggle-full-screen="goFullscreen" :close-full-screen="closeFullScreen"/>
     <!-- Card -->
     <div 
       class="w-full max-w-md h-65 perspective cursor-pointer mx-auto mt-3" 
