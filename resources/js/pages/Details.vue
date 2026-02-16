@@ -1,85 +1,130 @@
 <template>
-  <div class="min-h-screen bg-zinc-950 text-zinc-100 font-sans p-4 pb-12">
-    <header class="flex justify-between items-center mb-8 pt-2">
-      <button class="p-2 bg-zinc-900 rounded-full border border-zinc-800 active:scale-90 transition-transform">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <span class="text-zinc-500 font-medium text-sm tracking-wide uppercase">Partner Details</span>
-      <div class="w-10"></div> 
-    </header>
+  <Teleport to="body">
+    <Transition name="page-fade">
+      <div
+        v-if="show"
+        class="fixed inset-0 z-[70] flex flex-col bg-zinc-950 overflow-y-auto"
+      >
+        <header class="sticky top-0 z-20 flex justify-between items-center w-full p-4 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
+          <button @click="$emit('close')" class="p-2 bg-zinc-900 rounded-full border border-zinc-800 active:scale-90 transition-transform text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <span class="text-zinc-400 font-semibold text-xs tracking-widest uppercase">Partner Details</span>
+          <div class="w-10"></div>
+        </header>
 
-    <div class="flex flex-col items-center text-center mb-8">
-      <div class="w-24 h-24 rounded-3xl bg-zinc-900 border border-zinc-800 p-4 mb-4 shadow-xl">
-        <img :src="image" :alt="name" class="w-full h-full object-contain" />
+        <main class="flex-1 w-full max-w-2xl mx-auto p-6 pb-20">
+          
+          <div class="flex flex-col items-center text-center mt-4 mb-8">
+            <div class="w-32 h-32 rounded-3xl bg-zinc-900 border border-zinc-800 p-4 mb-4 shadow-2xl">
+              <img :src="image" :alt="name" class="w-full h-full object-contain rounded-2xl" />
+            </div>
+            <h1 class="text-3xl font-bold tracking-tight text-white mb-1">{{ name }}</h1>
+            <p class="text-zinc-500 text-sm">Official Loyalty Partner</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-emerald-500/20 to-zinc-900 border border-emerald-500/30 rounded-3xl p-8 mb-8 relative overflow-hidden">
+            <div class="relative z-10 text-center">
+              <span class="text-emerald-400 font-bold uppercase tracking-widest text-xs">Current Offer</span>
+              <h2 class="text-5xl font-black text-emerald-400 mt-2">{{ discountAmount }}% OFF</h2>
+              <p class="text-emerald-200/60 text-base mt-2">Exclusive for Loyalty Members</p>
+            </div>
+            <div class="absolute -right-12 -top-12 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl"></div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 mb-10">
+            <a :href="location" target="_blank" class="flex flex-col items-center justify-center p-5 bg-zinc-900 border border-zinc-800 rounded-2xl active:scale-95 transition-transform hover:border-zinc-600">
+              <span class="text-2xl mb-2">📍</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Map</span>
+            </a>
+            <a :href="facebook" target="_blank" class="flex flex-col items-center justify-center p-5 bg-zinc-900 border border-zinc-800 rounded-2xl active:scale-95 transition-transform hover:border-zinc-600">
+              <span class="text-2xl mb-2">🌐</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Facebook</span>
+            </a>
+            <a :href="'tel:' + phone" class="flex flex-col items-center justify-center p-5 bg-zinc-900 border border-zinc-800 rounded-2xl active:scale-95 transition-transform hover:border-zinc-600">
+              <span class="text-2xl mb-2">📞</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Call</span>
+            </a>
+          </div>
+
+          <div class="space-y-10">
+            <section>
+              <h3 class="text-xl font-bold mb-3 text-white">Terms & Conditions</h3>
+              <p class="text-zinc-400 text-base leading-relaxed">
+                {{ details }}
+              </p>
+            </section>
+
+            <section>
+  <h3 class="text-xl font-bold mb-4 text-white">How to redeem</h3>
+  <div class="space-y-4">
+    <div v-for="(step, index) in steps" :key="index" class="flex gap-5 items-start">
+      <div class="flex-none w-10 h-10 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-sm font-bold text-emerald-500 border border-emerald-500/20">
+        {{ index + 1 }}
       </div>
-      <h1 class="text-2xl font-bold tracking-tight mb-1">{{ name }}</h1>
-    </div>
-
-    <div class="bg-gradient-to-br from-emerald-500/20 to-emerald-900/10 border border-emerald-500/30 rounded-3xl p-6 mb-8 relative overflow-hidden">
-      <div class="relative z-10">
-        <span class="text-emerald-400 font-bold uppercase tracking-widest text-xs">Current Offer</span>
-        <h2 class="text-4xl font-black text-emerald-400 mt-1">{{ discountAmount }}10% OFF</h2>
-        <p class="text-emerald-200/60 text-sm mt-1">Exclusive for Loyalty Members</p>
-      </div>
-      <div class="absolute -right-8 -top-8 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl"></div>
-    </div>
-
-    <div class="grid grid-cols-3 gap-3 mb-10">
-      <a :href="location" target="_blank" class="flex flex-col items-center justify-center p-4 bg-zinc-900 border border-zinc-800 rounded-2xl active:scale-95 transition-transform">
-        <span class="text-xl mb-1">📍</span>
-        <span class="text-[10px] font-bold uppercase tracking-tighter text-zinc-400">Map</span>
-      </a>
-      <a :href="facebook" target="_blank" class="flex flex-col items-center justify-center p-4 bg-zinc-900 border border-zinc-800 rounded-2xl active:scale-95 transition-transform">
-        <span class="text-xl mb-1">🌐</span>
-        <span class="text-[10px] font-bold uppercase tracking-tighter text-zinc-400">Social</span>
-      </a>
-      <a :href="'tel:' + phone" class="flex flex-col items-center justify-center p-4 bg-zinc-900 border border-zinc-800 rounded-2xl active:scale-95 transition-transform">
-        <span class="text-xl mb-1">📞</span>
-        <span class="text-[10px] font-bold uppercase tracking-tighter text-zinc-400">Call</span>
-      </a>
-    </div>
-
-    <div class="mb-10 px-1">
-      <h3 class="text-lg font-semibold mb-3">Terms & Conditions</h3>
-      <p class="text-zinc-400 text-sm leading-relaxed">
-        This discount is applicable on all full-priced merchandise at participating city outlets. Offer cannot be combined with other seasonal sales or clearance items. Valid specifically for our premium
+      
+      <p class="text-zinc-400 text-base leading-6 self-center">
+        {{ step }}
       </p>
     </div>
-
-    <div class="space-y-6 px-1">
-      <h3 class="text-lg font-semibold">How to redeem</h3>
-      <div class="space-y-6">
-        <div v-for="(step, index) in steps" :key="index" class="flex gap-4">
-          <div class="flex-none w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-xs font-bold text-emerald-500 border border-zinc-800">
-            {{ index + 1 }}
-          </div>
-          <p class="text-zinc-400 text-sm leading-relaxed pt-1">{{ step }}</p>
-        </div>
-      </div>
-    </div>
   </div>
+</section>
+          </div>
+
+        </main>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   name: { type: String, default: "Sample Name" },
-  details: { 
-    type: String, 
-    default: "This discount is applicable on all full-priced merchandise at participating city outlets. Offer cannot be combined with other seasonal sales or clearance items. Valid specifically for our premium collection and electronic accessories." 
-  },
+  details: { type: String, default: "This discount is applicable on all full-priced merchandise at participating city outlets. Offer cannot be combined with other seasonal sales or clearance items." },
   image: { type: String, default: "https://picsum.photos/200/300" },
   location: { type: String, default: "https://maps.google.com" },
   phone: { type: String, default: "1234567890" },
   facebook: { type: String, default: "https://facebook.com/sample" },
-  discountAmount: { type: String, default: "10%" }
+  discountAmount: { type: String, default: "10%" },
+  show: { type: Boolean, required: true }
 });
 
 const steps = [
   'Visit the partner outlet and shop your favorite items.',
   'Inform the cashier about your loyalty membership.',
-  'Scan the QR code available at the counter via this app.',
+  'Show Your Membership Card or App to the cashier at checkout.',
   'The discount will be applied automatically to your bill.'
 ];
 </script>
+
+<style scoped>
+/* Full Page Transition (Slide Up or Fade) */
+.page-fade-enter-active,
+.page-fade-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.page-fade-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 10px;
+}
+</style>

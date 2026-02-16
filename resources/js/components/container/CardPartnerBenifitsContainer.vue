@@ -19,6 +19,9 @@ defineProps({
             :image="list.image" 
             :details="list.details"
             :discount="list.discount_percentage"
+            :location="list.location"
+            :facebook="list.facebook"
+            :phone="list.phone"
         />
     </div>
 

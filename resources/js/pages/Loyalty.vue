@@ -56,14 +56,14 @@ const toggleCard = () => {
     :class="activeTab === 'points' ? 'bg-blue-500 text-white shadow-md' : ''"
     @click="activeTab = 'points'"
   >
-    Card Points
+    Point Deals
   </button>
   <button
     class="flex-1 py-2 font-semibold text-sm text-slate-400 rounded-lg transition-all duration-200"
     :class="activeTab === 'benefits' ? 'bg-blue-500 text-white shadow-md' : ''"
     @click="activeTab = 'benefits'"
   >
-    Benefits
+    Partner Benefits
   </button>
 </div>
 

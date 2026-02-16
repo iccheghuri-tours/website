@@ -1,6 +1,35 @@
+<script setup>
+import {ref } from 'vue';
+import Details from '@/pages/Details.vue';
+
+defineProps({
+  name: String,
+  image: String,
+  details: String,
+  discount: String,
+  location: String,
+  facebook: String,
+  phone: String,
+})
+
+const emit = defineEmits(['view-details']);
+
+
+const isSheetOpen = ref(false);
+const openSheet = ()=>{
+    isSheetOpen.value = true;
+
+}
+const closeSheet = ()=>{
+    isSheetOpen.value = false;
+
+}
+</script>
+
+
 <template>
   <div 
-    @click="$emit('view-details')"
+    @click="openSheet()"
     class="group relative flex items-center gap-4 p-3 mb-3 rounded-2xl 
            bg-zinc-900/50 border border-white/5 backdrop-blur-sm
            active:scale-[0.98] active:bg-zinc-800/80 transition-all duration-200"
@@ -33,16 +62,18 @@
     >
       See Details
     </button>
+
+    <Details
+      :show="isSheetOpen"
+      :name="name"
+      :discount-amount="discount"
+      :image="image"
+      :phone="phone"
+      :facebook="facebook"
+      :location="location"
+      :details="details"
+      @close="isSheetOpen = false"
+    />
   </div>
 </template>
 
-<script setup>
-defineProps({
-  name: String,
-  image: String,
-  details: String,
-  discount: String
-})
-
-const emit = defineEmits(['view-details'])
-</script>
