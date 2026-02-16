@@ -1,5 +1,5 @@
 <script setup>
-import {ref } from 'vue';
+import { ref } from 'vue';
 import Details from '@/pages/Details.vue';
 
 defineProps({
@@ -12,30 +12,20 @@ defineProps({
   phone: String,
 })
 
-const emit = defineEmits(['view-details']);
-
-
 const isSheetOpen = ref(false);
-const openSheet = ()=>{
-    isSheetOpen.value = true;
 
-}
-const closeSheet = ()=>{
-    isSheetOpen.value = false;
-
+const openSheet = () => {
+  isSheetOpen.value = true;
 }
 </script>
-
 
 <template>
   <div 
     @click="openSheet()"
-    class="group relative flex items-center gap-4 p-3 mb-3 rounded-2xl 
-           bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-white/5 backdrop-blur-sm
-           shadow-sm dark:shadow-none
-           active:scale-[0.98] active:bg-slate-50 dark:active:bg-zinc-800/80 transition-all duration-200"
+    class="group relative flex items-center gap-4 p-4 mb-3 bg-[#fff9f0] border-2 border-[#f39221] rounded-2xl 
+           shadow-sm active:scale-[0.98] transition-all duration-200 cursor-pointer"
   >
-    <div class="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-xl border border-slate-100 dark:border-white/10">
+    <div class="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-xl border border-[#f39221]/20 bg-white">
       <img 
         :src="image" 
         :alt="name"
@@ -44,19 +34,22 @@ const closeSheet = ()=>{
     </div>
 
     <div class="flex-1 min-w-0">
-      <h3 class="text-sm font-semibold text-slate-900 dark:text-white truncate">
+      <h3 class="text-base font-bold text-[#231f20] font-bengali truncate">
         {{ name }}
       </h3>
-      <p class="text-xs text-emerald-600 dark:text-green-400 font-medium line-clamp-1">
-        {{ discount }}% OFF
-      </p>
-      <p class="text-[11px] text-slate-500 dark:text-zinc-400 line-clamp-1">
+      <div class="flex items-center gap-1.5">
+        <span class="text-sm font-black text-[#f39221] font-mono">
+          {{ discount }}% OFF
+        </span>
+      </div>
+      <p class="text-xs text-[#231f20] opacity-70 line-clamp-1 leading-tight">
         {{ details }}
       </p>
     </div>
 
     <button 
-      class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors underline decoration-blue-600/30 dark:decoration-blue-400/30"
+      class="flex items-center justify-center px-3 py-2 bg-[#f39221] text-white text-xs font-bold rounded-lg 
+             shadow-md hover:brightness-105 transition-all"
     >
       Details
     </button>
@@ -74,3 +67,14 @@ const closeSheet = ()=>{
     />
   </div>
 </template>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Hind+Siliguri:wght@600;700&display=swap');
+
+.font-bengali {
+  font-family: 'Hind Siliguri', sans-serif;
+}
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+</style>
