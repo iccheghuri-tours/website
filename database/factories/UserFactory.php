@@ -32,7 +32,11 @@ class UserFactory extends Factory
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
             'two_factor_confirmed_at' => null,
-            'slug' => Str::slug(fake()->unique()->name()), 
+            'slug' => Str::random(9),
+            'points' => fake()->numberBetween(0, 1000),
+            'phone' => fake()->phoneNumber(),
+            'image' => fake()->imageUrl(300, 300, 'people', true),
+            'completed_tours' => fake()->numberBetween(1, 15),
 
             
         ];
