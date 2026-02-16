@@ -17,6 +17,14 @@ const activeTab = ref('points');
 const toggleCard = () => {
   isFlipped.value = !isFlipped.value;
 };
+
+function getRank(count) {
+  if (count >= 10) return 'দিগ্বিজয়ী';
+  if (count >= 7) return 'দিগন্তযাত্রী';
+  if (count >= 5) return 'যাযাবর';
+  if (count >= 3) return 'অভিযাত্রী';
+  if (count >= 1) return 'পথিক';
+}
 </script>
 
 <template>
@@ -60,7 +68,7 @@ const toggleCard = () => {
           </svg>
         </div>
         <div class="text-2xl font-black text-white tabular-nums">
-          {{ user.completed_tours || 5 }}
+          {{ user.completed_tours || 5}}
         </div>
       </div>
 
@@ -73,7 +81,7 @@ const toggleCard = () => {
 
     <div class="text-right">
       <span class="block text-[10px] uppercase tracking-widest text-slate-500 font-bold leading-none">Rank</span>
-      <span class="text-xs font-black text-indigo-400 uppercase">{{ user.rank || 'Expert' }}</span>
+      <span class="text-s font-black text-indigo-400 uppercase">{{ getRank(user.completed_tours) }}</span>
     </div>
   </div>
 </div>
