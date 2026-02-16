@@ -19,10 +19,10 @@ const qrCodeSrc = (url) => `https://api.qrserver.com/v1/create-qr-code/?size=150
       <div class="relative z-10 flex-1 flex flex-col justify-center border-r border-slate-200 dark:border-white/5 pr-6">
         <div class="flex items-center gap-3">
           <div class="h-8 w-8 bg-slate-200 dark:bg-white/10 rounded-full flex items-center justify-center border border-slate-300 dark:border-white/20">
-            <div class="h-4 w-4 bg-emerald-500 dark:bg-emerald-400 rounded-full animate-pulse"></div>
+            <div class="h-4 w-4 bg-orange-500 dark:bg-orange-400 rounded-full animate-pulse"></div>
           </div>
           <h1 class="text-2xl font-black italic tracking-tighter text-slate-900 dark:text-white">
-            iccheghuri<span class="text-emerald-500 dark:text-emerald-400">.</span>
+            iccheghuri<span class="text-orange-500 dark:text-orange-400">.</span>
           </h1>
         </div>
         <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 uppercase tracking-widest font-medium">

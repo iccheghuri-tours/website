@@ -28,10 +28,10 @@ defineProps({
         <div class="mb-4">
           <h2 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">{{ user.name }}</h2>
           <div class="mt-1.5 space-y-0.5">
-            <p class="text-slate-600 dark:text-slate-300 text-[10px] flex items-center gap-2">
+            <p class="text-slate-600 dark:text-slate-300 text-[12px] flex items-center gap-2">
               <span class="opacity-60 dark:opacity-50">📱</span> {{ user.phone }}
             </p>
-            <p class="text-slate-600 dark:text-slate-300 text-[10px] flex items-center gap-2">
+            <p class="text-slate-600 dark:text-slate-300 text-[12px] flex items-center gap-2">
               <span class="opacity-60 dark:opacity-50">✉️</span> {{ user.email }}
             </p>
           </div>
