@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import CardFront from '@/components/cards/CardFront.vue';
 import CardBack from '@/components/cards/CardBack.vue';
 import { usePage } from '@inertiajs/vue3';
@@ -25,9 +25,39 @@ function getRank(count) {
   if (count >= 3) return 'অভিযাত্রী';
   if (count >= 1) return 'পথিক';
 }
+
+const fullscreenEntered = ref(false);
+
+function goFullscreen() {
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) elem.requestFullscreen();
+  else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen(); // Safari
+  else if (elem.msRequestFullscreen) elem.msRequestFullscreen(); // IE/Edge
+  fullscreenEntered.value = true;
+}
+
+/*onMounted(() => {
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) fullscreenEntered.value = false;
+  });
+});*/
 </script>
 
 <template>
+  
+       <div v-if="!fullscreenEntered" class="fixed inset-0 bg-black/80 backdrop-blur-md flex justify-center items-center z-50">
+  <div class="bg-zinc-900/90 border border-white/10 shadow-2xl rounded-3xl p-8 max-w-xs w-full text-center">
+    <p class="text-zinc-100 mb-8 text-xl font-semibold tracking-tight">
+      Please Enter Fullscreen Mode
+    </p>
+    <button 
+      @click="goFullscreen" 
+      class="w-full bg-white text-black py-4 rounded-2xl font-bold uppercase tracking-widest text-sm hover:bg-zinc-200 transition-all active:scale-95 shadow-lg shadow-white/5"
+    >
+      OK
+    </button>
+  </div>
+</div>
   <div class="flex flex-col items-center w-full p-4">
 
     <!-- Card -->
