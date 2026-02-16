@@ -20,7 +20,7 @@ defineProps({
 </script>
 
 <template>
-  <div class=" w-full max-w-sm mx-auto">
+  <div class=" w-full mx-auto">
     <div class="relative overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-5 shadow-2xl transition-transform hover:scale-[1.02] duration-300 border border-white/10 flex flex-col justify-between min-h-[240px]">
       
       <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/15 rounded-full blur-3xl"></div>

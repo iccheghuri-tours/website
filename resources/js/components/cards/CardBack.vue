@@ -15,7 +15,7 @@ const qrCodeSrc = (url) => `https://api.qrserver.com/v1/create-qr-code/?size=150
 </script>
 
 <template>
-  <div class=" w-full max-w-sm mx-auto">
+  <div class=" w-full mx-auto">
     <div class="relative h-56 overflow-hidden bg-gradient-to-tr from-slate-800 to-slate-900 rounded-3xl p-8 shadow-2xl border border-white/10 flex items-center justify-between">
       
       <div class="absolute top-8 left-0 w-full h-12 bg-black/40 backdrop-blur-md"></div>
