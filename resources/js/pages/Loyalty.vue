@@ -63,7 +63,10 @@ function closeFullScreen() {
   </div>
 
   <div class="flex flex-col items-center w-full p-4 min-h-screen bg-slate-50 dark:bg-transparent transition-colors duration-300">
-    <ToolBar v-if="isAlertShown" :is-full-screen="isFullScreen" :toggle-full-screen="goFullscreen" :close-full-screen="closeFullScreen"/>
+    <div class="w-full max-w-md mb-2">
+   <ToolBar v-if="isAlertShown" :is-full-screen="isFullScreen" :toggle-full-screen="goFullscreen" :close-full-screen="closeFullScreen"/>
+    </div>
+ 
 
     <div 
       class="w-full max-w-md h-65 perspective cursor-pointer mx-auto mt-3" 
