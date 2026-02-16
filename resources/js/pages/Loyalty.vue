@@ -50,7 +50,35 @@ const toggleCard = () => {
 
     <!-- Tabs -->
 <!-- Tabs -->
-<div class="flex w-full max-w-md bg-slate-800 p-2 rounded-xl sticky top-0 z-20">
+<div class="w-full max-w-md">
+  <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="text-blue-500/80">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div class="text-2xl font-black text-white tabular-nums">
+          {{ user.completed_tours || 5 }}
+        </div>
+      </div>
+
+      <div class="h-8 w-[1px] bg-slate-700/50"></div>
+
+      <div>
+        <h4 class="text-white text-sm font-bold leading-none">Completed Tours</h4>
+      </div>
+    </div>
+
+    <div class="text-right">
+      <span class="block text-[10px] uppercase tracking-widest text-slate-500 font-bold leading-none">Rank</span>
+      <span class="text-xs font-black text-indigo-400 uppercase">{{ user.rank || 'Expert' }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="flex w-full max-w-md bg-slate-800 p-2 rounded-xl sticky top-0 z-20 mt-4">
   <button
     class="flex-1 py-2 font-semibold text-sm text-slate-400 rounded-lg transition-all duration-200"
     :class="activeTab === 'points' ? 'bg-blue-500 text-white shadow-md' : ''"
