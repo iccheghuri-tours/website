@@ -33,6 +33,9 @@ const user = page.props.auth.user;
 function openMembershipPage(){
     window.location.href = `/points/${user.slug}`;
 }
+function openAdminPanel(){
+    window.location.href = "/admin";
+}
 </script>
 
 <template>
@@ -144,8 +147,28 @@ function openMembershipPage(){
             </div>
 
             <DeleteUser />
-            <button class="bg-orange-400 p-3 w-full rounded-lg font-bold text-white" @click="openMembershipPage()" >Iccheghuri Membership Card</button>
+            <div class="grid gap-4 sm:grid-cols-2">
+                <div 
+                    @click="openMembershipPage()" 
+                    class="group cursor-pointer rounded-xl border border-orange-200 bg-orange-50/50 p-5 transition-all hover:bg-orange-100 dark:border-orange-900/30 dark:bg-orange-950/20 dark:hover:bg-orange-900/30"
+                >
+                    <div class="flex flex-col gap-1">
+                        <span class="text-sm font-bold tracking-tight text-orange-600 dark:text-orange-400">Iccheghuri Membership</span>
+                        <p class="text-xs text-orange-700/70 dark:text-orange-500/60">Access your digital card and points</p>
+                    </div>
+                </div>
 
+                <div 
+                    v-if="user.role === 'admin'" 
+                    @click="openAdminPanel()" 
+                    class="group cursor-pointer rounded-xl border border-blue-200 bg-blue-50/50 p-5 transition-all hover:bg-blue-100 dark:border-blue-900/30 dark:bg-blue-950/20 dark:hover:bg-blue-900/30"
+                >
+                    <div class="flex flex-col gap-1">
+                        <span class="text-sm font-bold tracking-tight text-blue-600 dark:text-blue-400">Admin Dashboard</span>
+                        <p class="text-xs text-blue-700/70 dark:text-blue-500/60">Manage users and system settings</p>
+                    </div>
+                </div>
+            </div>
         </SettingsLayout>
     </AppLayout>
 </template>
