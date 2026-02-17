@@ -83,6 +83,21 @@ function openMembershipPage(){
                         <InputError class="mt-2" :message="errors.email" />
                     </div>
 
+                    <div class="grid gap-2">
+                        <Label for="phone">Phone number</Label>
+                        <Input
+                            id="phone"
+                            type="tel"
+                            class="mt-1 block w-full"
+                            name="phone"
+                            :default-value="user.phone || ''"
+                            required
+                            autocomplete="username"
+                            placeholder="Phone number"
+                        />
+                        <InputError class="mt-2" :message="errors.phone" />
+                    </div>
+
                     <div v-if="mustVerifyEmail && !user.email_verified_at">
                         <p class="-mt-4 text-sm text-muted-foreground">
                             Your email address is unverified.
