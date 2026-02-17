@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Form, Head, Link, usePage } from '@inertiajs/vue3';
+import { Form, Head, Link, router, usePage } from '@inertiajs/vue3';
 // import DeleteUser from '@/components/DeleteUser.vue';
 import Heading from '@/components/Heading.vue';
 import InputError from '@/components/InputError.vue';
@@ -12,6 +12,7 @@ import { type BreadcrumbItem } from '@/types';
 import ProfileController from '@/actions/App/Http/Controllers/Settings/ProfileController';
 import { edit } from '@/routes/profile';
 import { send } from '@/routes/verification';
+import { logout } from '@/routes';
 
 type Props = {
     mustVerifyEmail: boolean;
@@ -36,6 +37,12 @@ function openMembershipPage(){
 function openAdminPanel(){
     window.location.href = "/admin";
 }
+
+const handleLogout = () => {
+    router.flushAll();
+    router.post(logout(), {
+    });
+};
 </script>
 
 <template>
@@ -170,6 +177,7 @@ function openAdminPanel(){
                     </div>
                 </div>
             </div>
+            <button class="bg-red-950 text-white rounded w-full p-3 font-bold" @click="handleLogout()">Log Out</button>
         </SettingsLayout>
     </AppLayout>
 </template>
