@@ -7,6 +7,9 @@ import CardPartnerBenifitsContainer from '@/components/container/CardPartnerBeni
 import CardPointDealsContainer from '@/components/container/CardPointDealsContainer.vue';
 import ToolBar from '@/components/mix/ToolBar.vue';
 
+// IMPORT FAQ PAGE
+import FAQ from '@/pages/FAQ.vue';
+
 const { props } = usePage();
 const user = props.user;
 const regularDeals = props.regularDeals;
@@ -54,6 +57,11 @@ onMounted(()=>{
     }
   });
 });
+
+const isFAQOpened = ref(false);
+const openFAQ = () => {
+  isFAQOpened.value = true;
+}
 </script>
 
 <template>
@@ -93,29 +101,37 @@ onMounted(()=>{
       </div>
     </div>
 
-    <div class="w-full max-w-md">
-      <div class="relative group overflow-hidden bg-white border border-[#f39221]/20 rounded-2xl p-4 flex items-center justify-between border-[2px] border-orange-300 ">
-        <div class="absolute -left-4 top-0 w-20 h-20 bg-[#f39221]/5 blur-3xl rounded-full group-hover:bg-[#f39221]/10 transition-colors duration-500"></div>
-
-        <div class="flex items-center gap-5 relative">
-          <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[#fff9f0] border border-[#f39221]/10 rounded-xl shadow-inner">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#f39221] opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    <div class="w-full max-w-md bg-white/50 border-[2px] border-orange-300 rounded-2xl p-3 hover:bg-white transition-colors group">
+      <div class="flex items-center justify-between gap-4">
+        
+        <button @click="openFAQ" class="flex flex-col items-start hover:opacity-70 transition-opacity">
+          <div class="flex items-center gap-1.5 mb-0.5">
+            <div class="w-1.5 h-1.5 rounded-full bg-[#f39221] animate-pulse"></div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-[#231f20]/60">How it works</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="text-[11px] font-bold text-[#f39221]">Learn More</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5 text-[#f39221] group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </div>
-          <div class="h-10 w-[1px] bg-gradient-to-b from-transparent via-[#f39221]/20 to-transparent"></div>
-          <div class="flex flex-col">
-            <span class="text-[10px] uppercase tracking-[0.15em] font-bold text-[#231f20]/40 leading-none mb-1">Total Progress</span>
-            <h4 class="text-[#231f20] text-sm font-semibold tracking-wide">Completed Tours</h4>
+        </button>
+
+        <div class="h-8 w-[1px] bg-gradient-to-b from-transparent via-[#f39221]/20 to-transparent"></div>
+
+        <div class="flex items-center gap-3">
+          <div class="flex flex-col text-right">
+            <span class="text-[9px] uppercase tracking-wider font-bold text-[#231f20]/40 leading-none mb-0.5">Completed</span>
+            <h4 class="text-[#231f20] text-[11px] font-bold truncate">Tours</h4>
+          </div>
+          <div class="relative">
+            <span class="text-3xl font-black text-[#231f20] tabular-nums leading-none">
+              {{ user.completed_tours || 0 }}
+            </span>
+            <div class="h-1 w-full bg-[#f39221]/30 rounded-full mt-0.5 blur-[0.5px]"></div>
           </div>
         </div>
 
-        <div class="relative text-right">
-          <span class="text-4xl font-black text-[#231f20] tabular-nums tracking-tighter">
-            {{ user.completed_tours || 0 }}
-          </span>
-          <div class="h-1 w-full bg-[#f39221]/30 rounded-full mt-1 blur-[1px]"></div>
-        </div>
       </div>
     </div>
 
@@ -144,6 +160,12 @@ onMounted(()=>{
       <CardPartnerBenifitsContainer :lists="regularDeals" :user="user" />
     </div>
   </div>
+
+  <FAQ
+    :show="isFAQOpened"
+    @close="isFAQOpened = false"
+    :rank="getRank(user.completed_tours)"
+  />
 </template>
 
 <style scoped>
