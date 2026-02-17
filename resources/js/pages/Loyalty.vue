@@ -46,6 +46,14 @@ function closeFullScreen() {
   else if (document.msExitFullscreen) document.msExitFullscreen(); 
   isFullScreen.value = false;
 }
+
+onMounted(()=>{
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+      isFullScreen.value = false;
+    }
+  });
+});
 </script>
 
 <template>
