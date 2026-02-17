@@ -10,7 +10,7 @@ defineProps({
 });
 
 // Using a public API for the QR code generation
-const qrCodeSrc = (url) => `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}`;
+const qrCodeSrc = () => `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}`;
 
 const url = window.location.origin + usePage().url;
 const mail = "support@"+window.location.hostname;
