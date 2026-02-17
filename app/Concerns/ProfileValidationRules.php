@@ -50,7 +50,7 @@ trait ProfileValidationRules
     }
     protected function phoneRules(): array
     {
-        return ['nullable', 'string', 'size:11']; // adjust as needed
+        return ['required', 'string', 'size:11']; // adjust as needed
         // optional: add regex for stricter validation:
         // return ['required', 'string', 'max:15', 'regex:/^\+?[0-9]{7,15}$/'];
     }
