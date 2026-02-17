@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import logo from '@/assets/images/logo.png'
-
+import { router } from '@inertiajs/vue3';
 defineProps({
   appName: {
     type: String,
@@ -20,6 +20,10 @@ defineProps({
     required: true
   }
 });
+
+function goToProfile() {
+  router.get('/settings/profile');
+}
 </script>
 
 <template>
@@ -37,12 +41,8 @@ defineProps({
     >
       <div class="flex items-center gap-3">
         <div class="relative flex items-center justify-center p-0.5 rounded-xl bg-gradient-to-br from-[#f39221]/20 to-transparent">
-          <div class="w-9 h-9 overflow-hidden rounded-[10px] bg-[#fff9f0]">
-            <img 
-              :src="logo" 
-              alt="Logo" 
-              class="w-full h-full object-cover"
-            />
+           <div class="w-9 h-9 overflow-hidden rounded-[10px] bg-[#fff9f0] flex items-center justify-center " @click="goToProfile">
+            <Icon icon="mdi:account-circle" class="w-6 h-6 text-gray-700" />
           </div>
         </div>
         
