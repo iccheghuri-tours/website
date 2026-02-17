@@ -133,7 +133,7 @@ function closeFullScreen() {
     </div>
 
     <div v-if="activeTab === 'benefits'" class="w-full max-w-md mt-4 animate-slideUp z-10">
-      <CardPartnerBenifitsContainer :lists="regularDeals" />
+      <CardPartnerBenifitsContainer :lists="regularDeals" :user="user" />
     </div>
   </div>
 </template>
