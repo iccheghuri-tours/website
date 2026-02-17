@@ -25,6 +25,7 @@ function getRank(count) {
   if (count >= 5) return 'যাযাবর';
   if (count >= 3) return 'অভিযাত্রী';
   if (count >= 1) return 'পথিক';
+  return 'অভিজ্ঞতাহীন';
 }
 
 const isAlertShown = ref(false);
@@ -103,7 +104,7 @@ function closeFullScreen() {
 
         <div class="relative text-right">
           <span class="text-4xl font-black text-[#231f20] tabular-nums tracking-tighter">
-            {{ user.completed_tours || 5 }}
+            {{ user.completed_tours || 0 }}
           </span>
           <div class="h-1 w-full bg-[#f39221]/30 rounded-full mt-1 blur-[1px]"></div>
         </div>
