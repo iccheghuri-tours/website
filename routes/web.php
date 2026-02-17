@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CRUDController;
 use App\Http\Controllers\LoyaltiController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -19,3 +21,4 @@ require __DIR__.'/settings.php';
 
 
 Route::get('/points/{slug}', [LoyaltiController::class, 'index']);
+Route::get('/admin', [CRUDController::class, 'index'])->middleware(['auth', AdminMiddleware::class]);
