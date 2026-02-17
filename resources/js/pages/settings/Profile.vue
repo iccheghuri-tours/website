@@ -148,7 +148,8 @@ function openAdminPanel(){
 
             <DeleteUser />
             <div class="grid gap-4 sm:grid-cols-2">
-                <div 
+                <div  
+                    v-if="user.role === 'user'"
                     @click="openMembershipPage()" 
                     class="group cursor-pointer rounded-xl border border-orange-200 bg-orange-50/50 p-5 transition-all hover:bg-orange-100 dark:border-orange-900/30 dark:bg-orange-950/20 dark:hover:bg-orange-900/30"
                 >
