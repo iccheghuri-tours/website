@@ -1,5 +1,6 @@
 <script setup>
 import logo from '@/assets/images/logo.svg';
+import { usePage } from '@inertiajs/vue3';
 
 defineProps({
   user: {
@@ -10,6 +11,10 @@ defineProps({
 
 // Using a public API for the QR code generation
 const qrCodeSrc = (url) => `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}`;
+
+const url = window.location.origin + usePage().url;
+const mail = "support@"+window.location.hostname;
+
 </script>
 
 <template>
@@ -37,7 +42,7 @@ const qrCodeSrc = (url) => `https://api.qrserver.com/v1/create-qr-code/?size=150
         <div class="flex flex-col items-center gap-2">
           <div class="bg-white p-2 rounded-sm border-[1.5px] border-[#231f20]/10">
             <img 
-              :src="qrCodeSrc(`https://icchheghuri.tour/verify/${user.slug || user.id}`)" 
+              :src="qrCodeSrc(url)" 
               alt="Member QR" 
               class="w-24 h-24"
             />
@@ -48,13 +53,13 @@ const qrCodeSrc = (url) => `https://api.qrserver.com/v1/create-qr-code/?size=150
       <div class="relative z-10 border-t border-[#f39221]/10 pt-3 flex items-end justify-between">
         <div class="flex flex-col">
           <p class="text-[7px] uppercase font-bold text-[#f39221] tracking-wider">Contact Support</p>
-          <p class="text-[9px] font-bold text-[#231f20]">support@icchheghuri.com.bd</p>
+          <p class="text-[9px] font-bold text-[#231f20]">{{ mail }}</p>
         </div>
         
         <div class="text-right">
           <p class="text-[8px] uppercase font-bold text-[#231f20] opacity-60 leading-none">Member ID</p>
           <p class="text-sm font-mono font-bold text-[#f39221] leading-none mt-1">
-            #{{ user.id.toString().padStart(6, '0') }}
+            #{{ 641300+user.id }}
           </p>
         </div>
       </div>
