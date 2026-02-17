@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import logo from '@/assets/images/logo.svg';
 import { usePage } from '@inertiajs/vue3';
 

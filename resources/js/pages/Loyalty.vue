@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import CardFront from '@/components/cards/CardFront.vue';
 import CardBack from '@/components/cards/CardBack.vue';

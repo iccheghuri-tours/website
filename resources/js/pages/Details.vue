@@ -78,7 +78,7 @@
   </Teleport>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   name: { type: String, default: "Sample Name" },
   details: { type: String, default: "This discount is applicable on all full-priced merchandise at participating city outlets. Offer cannot be combined with other seasonal sales or clearance items." },
