@@ -29,6 +29,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
 const page = usePage();
 const user = page.props.auth.user;
+
+function openMembershipPage(){
+    window.location.href = `/points/${user.slug}`;
+}
 </script>
 
 <template>
@@ -125,6 +129,9 @@ const user = page.props.auth.user;
             </div>
 
             <DeleteUser />
+            <button class="bg-orange-400 p-3 w-full rounded-lg font-bold text-white" @click="openMembershipPage()" >Iccheghuri Membership Card</button>
+
         </SettingsLayout>
     </AppLayout>
 </template>
+    
