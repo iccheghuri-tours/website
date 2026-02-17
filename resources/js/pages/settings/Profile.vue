@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Form, Head, Link, usePage } from '@inertiajs/vue3';
-import DeleteUser from '@/components/DeleteUser.vue';
+// import DeleteUser from '@/components/DeleteUser.vue';
 import Heading from '@/components/Heading.vue';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
@@ -146,7 +146,7 @@ function openAdminPanel(){
                 </Form>
             </div>
 
-            <DeleteUser />
+            <!-- <DeleteUser /> -->
             <div class="grid gap-4 sm:grid-cols-2">
                 <div  
                     v-if="user.role === 'user'"
