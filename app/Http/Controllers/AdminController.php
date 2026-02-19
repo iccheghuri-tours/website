@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class CRUDController extends Controller
+class AdminController extends Controller
 {
     //
-    function index(Request $request)
-    {
+    function index(){
         return Inertia::render('Admin');
     }
 }

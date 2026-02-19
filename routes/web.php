@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\CRUDController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoyaltiController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,4 +23,7 @@ require __DIR__.'/settings.php';
 
 
 Route::get('/points/{slug}', [LoyaltiController::class, 'index']);
-Route::get('/admin', [CRUDController::class, 'index'])->middleware(['auth', AdminMiddleware::class]);
+Route::prefix('/admin')->middleware(['auth', AdminMiddleware::class])->name('admin.')->group(function (){
+    Route::get('/', [AdminController::class, 'index']);
+    Route::resource('users',UserController::class);
+});
