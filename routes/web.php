@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoyaltiController;
+use App\Http\Controllers\PointDealController;
+use App\Http\Controllers\RegularDealController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -25,5 +27,7 @@ require __DIR__.'/settings.php';
 Route::get('/points/{slug}', [LoyaltiController::class, 'index']);
 Route::prefix('/admin')->middleware(['auth', AdminMiddleware::class])->name('admin.')->group(function (){
     Route::get('/', [AdminController::class, 'index']);
-    Route::resource('users',UserController::class);
+    Route::resource('/users',UserController::class);
+    Route::resource('/partners',RegularDealController::class);
+    Route::resource('/offers',PointDealController::class);
 });
