@@ -6,7 +6,7 @@ import AdminLayout from '../AdminLayout.vue';
 <template>
   <AdminLayout>
 
-    <h1 class="text-[25px] font-bold">Admin/</h1>
+    <h1 class="text-[25px] font-bold text-black">Admin/</h1>
 
   </AdminLayout>
 </template>

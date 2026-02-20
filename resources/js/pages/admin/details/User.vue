@@ -41,7 +41,7 @@ const handleDelete = () =>{
             <input 
               v-model="user.name" 
               type="text"
-              class="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-sm"
+              class="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-sm text-gray-900"
             >
           </div>
 
@@ -50,7 +50,7 @@ const handleDelete = () =>{
             <input 
               v-model="user.email" 
               type="email"
-              class="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-sm"
+              class="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-sm text-gray-900"
             >
           </div>
 
@@ -59,7 +59,7 @@ const handleDelete = () =>{
             <input 
               v-model="user.phone" 
               type="tel"
-              class="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-sm"
+              class="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-sm text-gray-900"
             >
           </div>
 
@@ -68,7 +68,7 @@ const handleDelete = () =>{
             <input 
               v-model="user.points" 
               type="number"
-              class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-sm"
+              class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-sm text-gray-900"
             >
           </div>
           <div class="flex flex-col gap-1.5">
@@ -76,7 +76,7 @@ const handleDelete = () =>{
             <input 
               v-model="user.completed_tours" 
               type="number"
-              class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-sm"
+              class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-sm text-gray-900"
             >
           </div>
         </div>

@@ -6,8 +6,9 @@ import AdminLayout from '../AdminLayout.vue';
 
 <template>
   <AdminLayout>
-  <h1 class="text-[25px] font-bold">Admin/Offers</h1>
-  <p>Current Partners: </p>
+    
+  <h1 class="text-[25px] font-bold text-black">Admin/Offers</h1>
+  <p class="text-black">Current Partners: </p>
 
   
   <div v-for="offer in data" 

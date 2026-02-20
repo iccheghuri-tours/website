@@ -7,8 +7,8 @@ const props = defineProps({ data: Array });
 
 <template>
   <AdminLayout>
-    <h1 class="text-[25px] font-bold">Admin/Users</h1>
-    <p>Current Users:</p>
+    <h1 class="text-[25px] font-bold text-black">Admin/Users</h1>
+    <p class="text-black">Current Users: </p>
     
     <Link 
       v-for="user in data" 
