@@ -24,25 +24,37 @@ class AdminController extends Controller
         return Inertia::render('admin/Mail');
     }
 
-    function sendMail(Request $request){
-        $request->validate([
-        'subject' => 'required|string|max:255',
-        'body' => 'required|string',
+function sendMail(Request $request)
+{
+    $request->validate([
+        'subject'   => 'required|string|max:255',
+        'body'      => 'required|string',
+        'image'     => 'nullable|url',
+        'btn_label' => 'nullable|string',
+        'btn_link'  => 'nullable|url',
+        'email'     => 'nullable|email',
     ]);
 
-    $emails = User::pluck('email')->toArray();
+    // Determine recipients
+    $recipients = $request->email ? [$request->email] : User::pluck('email')->toArray();
 
-    foreach($emails as $email){
+    // Send mail to each recipient
+    foreach ($recipients as $email) {
         Mail::to($email)->send(new SimpleMail([
-            'subject' => $request->subject,
-            'message'=>$request->body
+            'subject'   => $request->subject,
+            'message'   => $request->body,
+            'image'     => $request->image,
+            'btn_label' => $request->btn_label,
+            'btn_link'  => $request->btn_link,
         ]));
     }
 
-        return back()->with('success', 'Mail sent to all users!');
+    $successMessage = $request->email
+        ? 'Mail sent to '.$request->email.'!'
+        : 'Mail sent to all users!';
 
-
-    }
+    return back()->with('success', $successMessage);
+}
 
 
     
