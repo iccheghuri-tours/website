@@ -9,15 +9,15 @@
           <button @click="$emit('close')" class="p-2 bg-[#f39221]/10 text-[#f39221] rounded-xl active:scale-95 transition-all mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
-          <h2 class="text-lg font-bold text-[#231f20]">HOW IT WORKS</h2>
+          <h2 class="text-lg font-bold text-[#231f20]">এটি যেভাবে কাজ করে</h2>
         </header>
 
         <main class="flex-1 w-full max-w-xl mx-auto px-5 py-8 space-y-8">
           
           <section class="bg-white rounded-[2.5rem] p-7 border-[2px] border-orange-300">
             <div class="flex items-center justify-between mb-8">
-              <h3 class="text-xl font-[900] text-[#231f20] tracking-tight">How to Earn</h3>
-              <span class="text-[10px] font-black text-[#f39221] bg-[#f39221]/10 px-3 py-1 rounded-full uppercase">Process</span>
+              <h3 class="text-xl font-[900] text-[#231f20] tracking-tight">কিভাবে পয়েন্ট পাবেন?</h3>
+              <span class="text-[10px] font-black text-[#f39221] bg-[#f39221]/10 px-3 py-1 rounded-full uppercase">ধাপসমূহ</span>
             </div>
 
             <div class="relative">
@@ -46,8 +46,8 @@
           <section class="bg-white rounded-[2.5rem] p-6 border-[2px] border-orange-300">
             <div class="flex items-center justify-between mb-8">
               <div>
-                <h3 class="text-xl font-black text-[#231f20] tracking-tight">Your Journey</h3>
-                <p class="text-[11px] text-[#231f20]/40 font-medium uppercase tracking-widest">Complete tours to level up</p>
+                <h3 class="text-xl font-black text-[#231f20] tracking-tight">আপনার ভ্ৰমণ স্ট্যাটাস </h3>
+                <p class="text-[11px] text-[#231f20]/40 font-medium uppercase ">পরবর্তী লেভেল অর্জন করতে বেশি বেশি ভ্রমণ করুন 😋 </p>
               </div>
               <div class="w-10 h-10 bg-[#f39221]/10 rounded-2xl flex items-center justify-center">
                 <span class="text-lg">🗺️</span>
@@ -73,7 +73,7 @@
                   :class="i <= currentTierIndex ? 'bg-white border-2 border-[#f39221] scale-110' : 'bg-[#fff9f0] border-2 border-transparent'"
                 >
                   {{ tier.icon }}
-                  <div v-if="i < currentTierIndex" class="absolute -top-1 -right-1 w-5 h-5 bg-[#f39221] rounded-full flex items-center justify-center border-2 border-white">
+                  <div v-if="i <= currentTierIndex" class="absolute -top-1 -right-1 w-5 h-5 bg-[#f39221] rounded-full flex items-center justify-center border-2 border-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
                   </div>
                 </div>
@@ -84,7 +84,7 @@
                       {{ tier.name }}
                     </span>
                     <span v-if="i === currentTierIndex" class="text-[9px] font-black bg-[#f39221] text-white px-2 py-0.5 rounded-full uppercase">
-                      Current
+                      বর্তমান 
                     </span>
                   </div>
                   <div class="flex items-center gap-2 mt-0.5">
@@ -98,7 +98,7 @@
           </section>
 
           <section class="pb-10 px-2">
-            <h3 class="text-lg font-bold text-[#231f20] mb-3">Terms & Conditions</h3>
+            <h3 class="text-lg font-bold text-[#231f20] mb-3">শর্ত ও নিয়মাবলী : </h3>
             <ul class="space-y-3">
               <li v-for="(term, i) in terms" :key="i" class="flex gap-3 text-sm text-[#231f20]/60 leading-relaxed">
                 <span class="text-[#f39221] font-bold">•</span>
@@ -123,18 +123,18 @@ const props = defineProps({
 
 const earningSteps = [
   {
-    title: 'Join a Tour',
-    desc: 'Book and travel with us to earn reward points on every tour you complete.',
+    title: 'ট্যুরে অংশ নিন',
+    desc: 'আমাদের সাথে প্রতিটি ভ্রমণ সম্পন্ন করলেই পাচ্ছেন রিওয়ার্ড পয়েন্ট।',
     icon: '🧳'
   },
   {
-    title: 'Refer & Earn',
-    desc: 'Invite friends to travel with us and earn bonus points when they book.',
+    title: 'রেফার করুন আর জিতুন',
+    desc: 'বন্ধুদের আমাদের সাথে ভ্রমণের আমন্ত্রণ জানান; তারা বুকিং করলেই আপনি পাবেন বোনাস পয়েন্ট।',
     icon: '🤝'
   },
   {
-    title: 'Review & Get Rewarded',
-    desc: 'Share your experience on our Facebook page and receive extra points.',
+    title: 'রিভিউ দিয়ে পয়েন্ট পান',
+    desc: 'আমাদের ফেসবুক পেজ, গ্রুপ অথবা গুগল ম্যাপে আপনার ভ্রমণের অভিজ্ঞতা শেয়ার করুন আর লুফে নিন এক্সট্রা পয়েন্ট।',
     icon: '⭐'
   }
 ];
@@ -145,21 +145,21 @@ const earningSteps = [
 
 const currentTierRank = props.rank;
 const tiers = [
-  { name: 'অভিজ্ঞতাহীন', tours: '0 Tours', benefit: 'Welcome Voucher', icon: '🌱' },
-  { name: 'পথিক', tours: '1 Tour', benefit: 'Priority Check-in', icon: '✈️' },
-  { name: 'অভিযাত্রী', tours: '3 Tours', benefit: 'Free Room Upgrades', icon: '🧭' },
-  { name: 'যাযাবর', tours: '5 Tours', benefit: 'Airport Transfer', icon: '🏎️' },
-  { name: 'দিগন্তযাত্রী', tours: '7 Tours', benefit: 'Airport Transfer', icon: '🏎️' },
-  { name: 'দিগ্বিজয়ী', tours: '10 Tours', benefit: 'Private Concierge', icon: '👑' }
+  { name: 'অভিজ্ঞতাহীন', tours: '0 Tours', benefit: '', icon: '🌱' },
+  { name: 'পথিক', tours: '1 Tour', benefit: '', icon: '✈️' },
+  { name: 'অভিযাত্রী', tours: '3 Tours', benefit: '', icon: '🧭' },
+  { name: 'যাযাবর', tours: '5 Tours', benefit: '', icon: '🏎️' },
+  { name: 'দিগন্তযাত্রী', tours: '7 Tours', benefit: '', icon: '🏎️' },
+  { name: 'দিগ্বিজয়ী', tours: '10 Tours', benefit: '', icon: '👑' }
 ];
 const currentTierIndex = tiers.findIndex(tier => tier.name === currentTierRank);
 
 
 const terms = [
-  "Points are non-transferable and cannot be exchanged for physical cash.",
-  "Loyalty benefits are only applicable at participating outlets listed in the app.",
-  "We reserve the right to modify or terminate the program without any notice.",
-  "Fraudulent activity will result in immediate termination of the membership."
+  "পয়েন্টগুলো অন্য কাউকে ট্রান্সফার করা যাবে না এবং এর বিনিময়ে নগদ টাকা দাবি করা যাবে না।",
+  "অফারগুলো শুধুমাত্র অ্যাপে দেওয়া নির্দিষ্ট প্রতিষ্ঠানের জন্য প্রযোজ্য।",
+  "যেকোনো সময় এই অফারের নিয়ম পরিবর্তন বা অফারটি বন্ধ করার অধিকার কর্তৃপক্ষ সংরক্ষণ করে।",
+  "যেকোনো ধরনের স্ক্যাম বা অসদুপায় অবলম্বন করলে মেম্বারশিপ সাথে সাথেই বাতিল করা হবে।"
 ];
 </script>
 

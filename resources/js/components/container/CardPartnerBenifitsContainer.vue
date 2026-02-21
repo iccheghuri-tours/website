@@ -28,7 +28,7 @@ defineProps({
             :phone="list.phone"
         />
     </div>
-    <h3 v-else class="text-center text-gray-500 mt-10 text-lg">You must complete minimum one tour to unlock partner benifits</h3>
+    <h3 v-else class="text-center text-gray-500 mt-10 text-lg">পার্টনার বেনিফিটগুলো আনলক করতে ইচ্ছেঘুড়ির সাথে অন্তত একটি ট্যুর সম্পন্ন করুন! 🎒</h3>
 
 
 

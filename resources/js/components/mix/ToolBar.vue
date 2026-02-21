@@ -48,7 +48,7 @@ function goToProfile() {
         
         <div class="flex flex-col">
           <span class="text-[#231f20] text-sm font-bold tracking-tight leading-none">
-            Membership Card
+            Travel Club Card
           </span>
           <span class="text-[10px] text-[#f39221] font-bold uppercase tracking-widest mt-1">
             by Iccheghuri Tours & Travels

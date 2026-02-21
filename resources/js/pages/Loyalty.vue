@@ -107,10 +107,10 @@ const openFAQ = () => {
         <button @click="openFAQ" class="flex flex-col items-start hover:opacity-70 transition-opacity">
           <div class="flex items-center gap-1.5 mb-0.5">
             <div class="w-1.5 h-1.5 rounded-full bg-[#f39221] animate-pulse"></div>
-            <span class="text-[10px] font-bold uppercase tracking-wider text-[#231f20]/60">How it works</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-[#231f20]/60">কিভাবে কাজ করে</span>
           </div>
           <div class="flex items-center gap-1">
-            <span class="text-[11px] font-bold text-[#f39221]">Learn More</span>
+            <span class="text-[11px] font-bold text-[#f39221]">বিস্তারিত দেখুন</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5 text-[#f39221] group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
@@ -137,18 +137,18 @@ const openFAQ = () => {
 
     <div class="flex w-full max-w-md bg-white p-1.5 rounded-2xl sticky top-4 z-20 mt-4 border border-[#f39221]/10 shadow-lg">
       <button
-        class="flex-1 py-2.5 font-bold text-xs uppercase tracking-widest rounded-xl transition-all duration-300"
+        class="flex-1 py-2.5 font-bold text-xs uppercase rounded-xl transition-all duration-300"
         :class="activeTab === 'points' ? 'bg-[#f39221] text-white shadow-lg shadow-[#f39221]/30' : 'text-[#231f20]/50 hover:bg-[#fff9f0]'"
         @click="activeTab = 'points'"
       >
-        Point Deals
+        পয়েন্ট ডিল
       </button>
       <button
-        class="flex-1 py-2.5 font-bold text-xs uppercase tracking-widest rounded-xl transition-all duration-300"
+        class="flex-1 py-2.5 font-bold text-xs uppercase rounded-xl transition-all duration-300"
         :class="activeTab === 'benefits' ? 'bg-[#f39221] text-white shadow-lg shadow-[#f39221]/30' : 'text-[#231f20]/50 hover:bg-[#fff9f0]'"
         @click="activeTab = 'benefits'"
       >
-        Partner Benefits
+        পার্টনার বেনিফিটস
       </button>
     </div>
 

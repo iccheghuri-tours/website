@@ -27,7 +27,7 @@ defineProps({
             <img :src="logo" alt="Logo" class="w-14" />
           </div>
           <h1 class="text-[#231f20] text-[15.5px] font-bold font-bengali leading-none drop-shadow-sm">ইচ্ছেঘুড়ি</h1>
-          <p class="text-[#f39221] text-[10px] font-black tracking-widest uppercase leading-none mt-1">Membership Card</p>
+          <p class="text-[#f39221] text-[10px] font-black tracking-widest uppercase leading-none mt-1">Travel Club Card</p>
           <p class="text-[#231f20] text-[7px] font-medium opacity-80 italic">by Icchheghuri Tour & Travels</p>
         </div>
 
