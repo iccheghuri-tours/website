@@ -22,7 +22,7 @@
             background-color: #ffffff; 
             border-radius: 8px; 
             overflow: hidden; 
-            border: 1px solid {{ $data['btn_color'] }};
+            border: 1px solid {{ !empty($data['btn_color']) ? $data['btn_color'] : '#000000' }};
         }
         
         /* Header & Logo */
