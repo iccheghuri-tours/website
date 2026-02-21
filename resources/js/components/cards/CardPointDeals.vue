@@ -44,7 +44,7 @@ const openSheet = () => {
       @click="openSheet()"
     >
       <span class="font-mono font-extrabold text-lg">{{ points }}</span>
-      <span class="text-[0.65rem] font-bold opacity-90">PTS</span>
+      <span class="text-[0.65rem] font-bold opacity-90">POINTS</span>
     </button>
   </div>
 

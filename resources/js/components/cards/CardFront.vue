@@ -51,7 +51,7 @@ defineProps({
         <div>
           <p class="text-[8px] uppercase tracking-widest text-[#f39221] font-black leading-none">Total Balance</p>
           <p class="text-xl font-mono font-bold text-[#231f20] leading-none mt-1">
-            {{ user.points.toLocaleString() }} <span class="text-[8px] font-sans text-[#f39221] font-bold">PTS</span>
+            {{ user.points.toLocaleString() }} <span class="text-[8px] font-sans text-[#f39221] font-bold">POINTS</span>
           </p>
         </div>
         
