@@ -21,6 +21,12 @@ const props = defineProps({ data: Array });
       </Link>
     </div>
 
+    <div class="flex items-center justify-between px-4 mb-2 text-xs font-bold uppercase tracking-wider text-gray-500">
+      <span class="flex-1">Name</span>
+      <span class="flex-1 px-4">Discount</span>
+      <span class="flex-1 text-right">Phone</span>
+    </div>
+
     <div class="space-y-2">
       <Link 
         v-for="partner in data" 
@@ -33,7 +39,7 @@ const props = defineProps({ data: Array });
         </span>
 
         <span class="flex-1 text-gray-700 text-sm truncate px-4">
-          {{ partner.discount_percentage }}% Discount
+          {{ partner.discount_percentage }}%
         </span>
 
         <span class="flex-1 text-right text-gray-600 font-mono text-xs sm:text-sm">
@@ -43,6 +49,3 @@ const props = defineProps({ data: Array });
     </div>
   </AdminLayout>
 </template>
-
-<style scoped>
-</style>

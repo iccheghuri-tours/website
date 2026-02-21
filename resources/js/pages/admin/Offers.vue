@@ -21,6 +21,11 @@ const props = defineProps({ data: Array });
       </Link>
     </div>
 
+    <div class="flex items-center justify-between px-4 mb-2 text-xs font-bold uppercase tracking-wider text-gray-500">
+      <span class="flex-1">Offer Name</span>
+      <span class="flex-1 text-right">Cost</span>
+    </div>
+
     <div class="space-y-2">
       <Link 
         v-for="offer in data" 
@@ -39,6 +44,3 @@ const props = defineProps({ data: Array });
     </div>
   </AdminLayout>
 </template>
-
-<style scoped>
-</style>
