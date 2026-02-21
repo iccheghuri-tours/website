@@ -32,6 +32,7 @@ function sendMail(Request $request)
         'image'     => 'nullable|url',
         'btn_label' => 'nullable|string',
         'btn_link'  => 'nullable|url',
+        'btn_color' => ['required', 'regex:/^#([0-9A-Fa-f]{6})$/'],
         'email'     => 'nullable|email',
     ]);
 
@@ -46,6 +47,7 @@ function sendMail(Request $request)
             'image'     => $request->image,
             'btn_label' => $request->btn_label,
             'btn_link'  => $request->btn_link,
+            'btn_color'  => $request->btn_color,
         ]));
     }
 

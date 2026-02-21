@@ -3,7 +3,7 @@ import { useForm } from '@inertiajs/vue3';
 import AdminLayout from '../AdminLayout.vue';
 import { ref } from 'vue';
 
-const mail = useForm({ subject: '', body: '', image: '' , btn_link: '', btn_label: '', email : ''});
+const mail = useForm({ subject: '', body: '', image: '' , btn_link: '', btn_label: '', email : '', btn_color: '#ff7b40'});
 
 const handleClick = () => {
   loadingText.value = "Mail is sending, Please keep the page open ... ";
@@ -98,6 +98,29 @@ const loadingText = ref('');
         </div>
 
         <div>
+  <label class="block text-sm font-medium text-gray-700 mb-1">
+    Button Color
+  </label>
+
+  <div class="flex items-center gap-3">
+    <input
+      type="color"
+      v-model="mail.btn_color"
+      class="w-14 h-10 p-1 border border-gray-300 rounded cursor-pointer"
+    />
+
+    <input
+      type="text"
+      v-model="mail.btn_color"
+      class="flex-1 px-4 py-2 border border-gray-300 rounded 
+             focus:ring-1 focus:ring-blue-500 focus:outline-none 
+             bg-white text-gray-900"
+      placeholder="#000000"
+    />
+  </div>
+</div>
+
+        <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">
             Recipient (optional – leave blank to send to all users)
           </label>
@@ -118,6 +141,8 @@ const loadingText = ref('');
         >
           Send Email
         </button>
+
+
 
       </div>
       <p>{{ loadingText }}</p>
