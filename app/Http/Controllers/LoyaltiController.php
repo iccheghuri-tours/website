@@ -13,7 +13,7 @@ class LoyaltiController extends Controller
     //
     function index($slug){
         $user = User::where('slug', $slug)->firstOrFail();
-        $regularDeals = RegularDeal::all();
+        $regularDeals = RegularDeal::orderBy('created_at', 'desc')->get();
         $pointDeals = PointDeal::orderBy('points_required', direction: 'asc')->get();
 
         

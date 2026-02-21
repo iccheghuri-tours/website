@@ -107,7 +107,7 @@ const openFAQ = () => {
         <button @click="openFAQ" class="flex flex-col items-start hover:opacity-70 transition-opacity">
           <div class="flex items-center gap-1.5 mb-0.5">
             <div class="w-1.5 h-1.5 rounded-full bg-[#f39221] animate-pulse"></div>
-            <span class="text-[10px] font-bold uppercase tracking-wider text-[#231f20]/60">কিভাবে কাজ করে</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-[#231f20]/60">কিভাবে কাজ করে ?</span>
           </div>
           <div class="flex items-center gap-1">
             <span class="text-[11px] font-bold text-[#f39221]">বিস্তারিত দেখুন</span>
