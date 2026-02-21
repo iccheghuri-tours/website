@@ -50,7 +50,7 @@
                 class="w-full py-4 bg-[#f39221] hover:bg-[#e67e00] text-white font-bold rounded-[1.5rem] transition-all active:scale-[0.97] shadow-lg shadow-orange-200"
                 @click="handleClose"
               >
-                Understand
+                ঠিক আছে !
               </button>
             </div>
           </div>

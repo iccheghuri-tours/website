@@ -22,14 +22,14 @@
               <img :src="image" :alt="name" class="w-full h-full object-contain rounded-2xl" />
             </div>
             <h1 class="text-3xl font-bold tracking-tight text-slate-900 mb-1">{{ name }}</h1>
-            <p class="text-slate-500 text-sm font-medium">Official Loyalty Partner</p>
+            <p class="text-slate-500 text-sm font-medium">Official Partner</p>
           </div>
 
           <div class="bg-gradient-to-br from-[#fff8f0] to-white border border-[#f39221]/30 rounded-3xl p-8 mb-8 relative overflow-hidden shadow-sm">
             <div class="relative z-10 text-center">
               <span class="text-[#f39221] font-bold uppercase tracking-widest text-xs">Current Offer</span>
               <h2 class="text-5xl font-black text-[#f39221] mt-2">{{ discountAmount }}% OFF</h2>
-              <p class="text-[#f39221]/70 text-base mt-2 font-medium">Exclusive for Loyalty Members</p>
+              <p class="text-[#f39221]/70 text-base mt-2 font-medium">Exclusive for Iccheghuri Card Holders</p>
             </div>
             <div class="absolute -right-12 -top-12 w-40 h-40 bg-[#f39221]/10 rounded-full blur-3xl"></div>
           </div>
@@ -51,14 +51,14 @@
 
           <div class="space-y-10">
             <section>
-              <h3 class="text-xl font-bold mb-3 text-slate-900">Terms & Conditions</h3>
+              <h3 class="text-xl font-bold mb-3 text-slate-900">অফারটির শর্তসমূহ :</h3>
               <p class="text-slate-600 text-base leading-relaxed">
                 {{ details }}
               </p>
             </section>
 
             <section>
-              <h3 class="text-xl font-bold mb-4 text-slate-900">How to redeem</h3>
+              <h3 class="text-xl font-bold mb-4 text-slate-900">অফারটি যেভাবে পাবেন : </h3>
               <div class="space-y-4">
                 <div v-for="(step, index) in steps" :key="index" class="flex gap-5 items-start">
                   <div class="flex-none w-10 h-10 rounded-2xl bg-[#fff8f0] flex items-center justify-center text-sm font-bold text-[#f39221] border border-[#f39221]/20">
@@ -91,10 +91,10 @@ const props = defineProps({
 });
 
 const steps = [
-  'Visit the partner outlet and shop your favorite items.',
-  'Inform the cashier about your loyalty membership.',
-  'Show Your Membership Card or App to the cashier at checkout.',
-  'The discount will be applied automatically to your bill.'
+  'আপনার পছন্দের আউটলেটে গিয়ে কেনাকাটা করুন।',
+  'পেমেন্টের সময় ক্যাশিয়ারকে আপনার ট্রাভেল ক্লাব কার্ডের কথা জানান।',
+  'বিল দেয়ার সময় ক্যাশিয়ারকে কার্ডটি দেখান।',
+  'ব্যস! আপনার বিলের ওপর ডিসকাউন্ট পেয়ে যাবেন।'
 ];
 </script>
 

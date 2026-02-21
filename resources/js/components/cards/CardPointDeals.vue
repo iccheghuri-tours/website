@@ -51,7 +51,7 @@ const openSheet = () => {
   <BottomSheet :show="isSheetOpen" @close="isSheetOpen = false" :name="name">
     <h2 class="text-lg font-bold text-[#231f20] font-bengali">{{ title }}</h2>
     <p class="mt-2 text-[#231f20]/80">
-      Congratulations. You are eligible for this offer. Please notify the agent of <span class="text-[#f39221] font-bold">Icchheghuri</span> before your next booking to get this offer.
+      অভিনন্দন! এই অফারটি আপনি নিতে পারবেন।পরবর্তী বুকিংয়ের সময় <span class="text-[#f39221] font-bold">ইচ্ছেঘুরি</span> টিমকে অবগত করুন ।
     </p>
   </BottomSheet>
 </template>
