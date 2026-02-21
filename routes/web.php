@@ -28,6 +28,7 @@ Route::get('/points/{slug}', [LoyaltiController::class, 'index']);
 Route::prefix('/admin')->middleware(['auth', AdminMiddleware::class])->name('admin.')->group(function (){
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/mail', [AdminController::class, 'mail']);
+    Route::post('/mail', [AdminController::class, 'sendMail']);
     Route::resource('/users',UserController::class);
     Route::resource('/partners',RegularDealController::class);
     Route::resource('/offers',PointDealController::class);
