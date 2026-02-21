@@ -18,7 +18,13 @@ class RegularDealController extends Controller
 
     public function show(RegularDeal $partner){
         return Inertia::render('admin/details/Partner',[
-            'data' => $partner
+            'data' => $partner,
+            'mode' => 'edit'
+        ]);
+    }
+    public function create(){
+        return Inertia::render('admin/details/Partner',[
+            'mode'=>'create'
         ]);
     }
     
@@ -35,6 +41,21 @@ class RegularDealController extends Controller
 
         return redirect()->route('admin.partners.index')
         ->with('message', 'Partner Updated successfully');
+    }
+
+    public function store(Request $request){
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'details' => 'required|string',
+            'phone' => 'required|string',
+            'facebook' => 'required|url',
+            'location' => 'required|url',
+            'discount_percentage' => 'required|integer',
+        ]);
+        RegularDeal::create($validated);
+
+        return redirect()->route('admin.partners.index')
+        ->with('message', 'Partner Created successfully');
     }
     public function destroy(RegularDeal $partner){
         $partner->delete();

@@ -1,14 +1,33 @@
 <script setup>
 import AdminLayout from '@/pages/AdminLayout.vue';
 import { useForm } from '@inertiajs/vue3';
-  const props = defineProps({ data: Object });
-  const partner = useForm({...props.data});
+
+  const props = defineProps({
+    data: Object,
+    mode : {type: String, default: 'create'}
+  });
+  const partner = useForm({
+    name: props.data?.name,
+    details: props.data?.details,
+    location: props.data?.location,
+    phone:props.data?.phone,
+    facebook: props.data?.facebook,
+    discount_percentage: props.data?.discount_percentage
+  });
 
   const handleSubmit = () => {
-  partner.patch(`/admin/partners/${props.data.id}`, {
+    if (props.mode === 'edit'){
+          partner.patch(`/admin/partners/${props.data.id}`, {
     onSuccess: () => alert("Changes saved successfully"),
     onError: () => alert("Invalid Input")
   });
+    }else {
+        partner.post(`/admin/partners/`, {
+    onSuccess: () => alert("Offer Created successfully"),
+    onError: () => alert("Invalid Input")
+  });
+    }
+
 }
   const handleDelete = () =>{
     if (confirm("Delete this user?")) {
@@ -26,9 +45,9 @@ import { useForm } from '@inertiajs/vue3';
   <div class="w-full max-w-5xl py-4">
       
       <div class="mb-6">
-        <p class="text-xs font-medium uppercase tracking-wider text-gray-400 mb-1">Admin / Partners / Details</p>
+        <p class="text-xs font-medium uppercase tracking-wider text-gray-400 mb-1">Admin / Partners / {{ props.mode === 'edit' ? 'Details':'create' }}</p>
         
-        <h1 class="text-2xl font-bold text-gray-800">Edit Partner Information</h1>
+        <h1 class="text-2xl font-bold text-gray-800">  {{ props.mode === 'edit' ? 'Edit Partner Information' : 'Create New Partner' }}</h1>
       </div>
 
       <form @submit.prevent="handleSubmit" class="space-y-6">
@@ -95,7 +114,7 @@ import { useForm } from '@inertiajs/vue3';
             type="submit" 
             class="inline-flex items-center justify-center px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-semibold rounded-md shadow transition-colors active:transform active:scale-[0.98]"
           >
-            Update partner
+            {{ props.mode === 'edit' ? 'Edit Partner' : 'Create partner' }}
           </button>
         </div>
 
@@ -105,6 +124,7 @@ import { useForm } from '@inertiajs/vue3';
   type="button"
   @click="handleDelete"
   class="px-4 py-2 text-sm font-semibold text-white bg-red-500 rounded-md mt-2"
+  v-if="props.mode === 'edit'"
 >
   Delete partner
 </button>

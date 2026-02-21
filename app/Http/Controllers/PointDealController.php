@@ -12,14 +12,32 @@ class PointDealController extends Controller
     function index(){
         $deals = PointDeal::all();
         return Inertia::render('admin/Offers',[
-            'data'=>$deals
+            'data'=>$deals,
         ]);
     }
 
     public function show(PointDeal $offer){
         return Inertia::render('admin/details/Offer',[
-            'data' => $offer
+            'data' => $offer,
+            'mode' => 'edit'
         ]);
+    }
+    public function create(){
+        return Inertia::render('admin/details/Offer',[
+            'mode' => 'create'
+        ]);
+    }
+
+    public function store(Request $request){
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'details' => 'required|string',
+            'points_required' => 'required|integer',
+        ]);
+        PointDeal::create($validated);
+
+        return redirect()->route('admin.offers.index')
+        ->with('message', 'Offer Created successfully');
     }
     
     public function update(Request $request, PointDeal $offer){
