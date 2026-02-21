@@ -20,7 +20,7 @@ const props = defineProps({ data: Array });
       ]"
     >
       <span class="flex-1 font-bold tracking-tight">
-        {{ user.name }} (Admin)
+        {{ user.role === 'admin' ? user.name+"(Admin)": user.name }} 
       </span>
 
       <span :class="['flex-1 text-sm truncate px-4', user.role === 'admin' ? 'text-white' : 'text-gray-700']">
