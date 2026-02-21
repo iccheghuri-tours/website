@@ -9,4 +9,5 @@ class RegularDeal extends Model
 {
     //
     use HasFactory;
+    protected $fillable = ['name', 'details', 'image', 'facebook', 'location', 'phone', 'discount_percentage'];
 }

@@ -10,4 +10,7 @@ class AdminController extends Controller
     function index(){
         return Inertia::render('admin/Dashboard');
     }
+    function mail(){
+        return Inertia::render('admin/Mail');
+    }
 }

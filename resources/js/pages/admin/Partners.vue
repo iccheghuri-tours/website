@@ -1,4 +1,5 @@
 <script setup>
+import { Link } from '@inertiajs/vue3';
 import AdminLayout from '../AdminLayout.vue';
 
   const props = defineProps({data: Array});
@@ -9,7 +10,7 @@ import AdminLayout from '../AdminLayout.vue';
   <AdminLayout>
   <h1 class="text-[25px] font-bold text-black">Admin/Partners</h1>
   <p class="text-black">Current Partners: </p>
-  <div v-for="partner in data" 
+  <Link v-for="partner in data" :key="partner.id" :href="`/admin/partners/${partner.id}`"
      class="flex items-center justify-between p-4 bg-white border border-gray-400 hover:bg-blue-50/50 transition-colors duration-200 mt-2 rounded">
   <span class="flex-1 font-bold text-black tracking-tight">
     {{ partner.name }}
@@ -23,7 +24,7 @@ import AdminLayout from '../AdminLayout.vue';
     {{ partner.phone }}
   </span>
   
-</div>
+</Link>
   </AdminLayout>
 </template>
 

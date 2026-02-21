@@ -16,13 +16,13 @@ class RegularDealController extends Controller
         ]);
     }
 
-    public function show(RegularDeal $deal){
-        return Inertia::render('admin/details/Partners',[
-            'data' => $deal
+    public function show(RegularDeal $partner){
+        return Inertia::render('admin/details/Partner',[
+            'data' => $partner
         ]);
     }
     
-    public function update(Request $request, RegularDeal $deal){
+    public function update(Request $request, RegularDeal $partner){
         $validated = $request->validate([
             'name' => 'required|max:255',
             'details' => 'required|string',
@@ -31,15 +31,15 @@ class RegularDealController extends Controller
             'location' => 'required|url',
             'discount_percentage' => 'required|integer',
         ]);
-        $deal->update($validated);
+        $partner->update($validated);
 
         return redirect()->route('admin.partners.index')
-        ->with('message', 'Deal Updated successfully');
+        ->with('message', 'Partner Updated successfully');
     }
-    public function destroy(RegularDeal $deal){
-        $deal->delete();
+    public function destroy(RegularDeal $partner){
+        $partner->delete();
         return redirect()->route('admin.partners.index')
-        ->with('message', 'Deal deleted successfully');
+        ->with('message', 'Partner deleted successfully');
     }
 
 }

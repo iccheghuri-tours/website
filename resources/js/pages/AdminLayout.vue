@@ -14,6 +14,7 @@ import { Link } from '@inertiajs/vue3';
         <Link href="/admin/users" class="flex-1 md:block p-3 rounded hover:bg-blue-200 hover:text-black transition-colors">Users</Link>
         <Link href="/admin/partners" class="flex-1 md:block p-3 rounded hover:bg-blue-200 hover:text-black transition-colors">Loyalty Partners</Link>
         <Link href="/admin/offers" class="flex-1 md:block p-3 rounded hover:bg-blue-200 hover:text-black transition-colors">Point Offers</Link>
+        <Link href="/admin/mail" class="flex-1 md:block p-3 rounded hover:bg-blue-200 hover:text-black transition-colors">Email</Link>
       </nav>
     </aside>
 

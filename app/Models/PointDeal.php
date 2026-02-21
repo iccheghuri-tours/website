@@ -9,5 +9,6 @@ class PointDeal extends Model
 {
     //
         use HasFactory;
+        protected $fillable = ['name','details','points_required'];
 
 }

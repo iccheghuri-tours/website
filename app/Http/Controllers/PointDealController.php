@@ -16,26 +16,26 @@ class PointDealController extends Controller
         ]);
     }
 
-    public function show(PointDeal $deal){
-        return Inertia::render('admin/details/PointDeal',[
-            'data' => $deal
+    public function show(PointDeal $offer){
+        return Inertia::render('admin/details/Offer',[
+            'data' => $offer
         ]);
     }
     
-    public function update(Request $request, PointDeal $deal){
+    public function update(Request $request, PointDeal $offer){
         $validated = $request->validate([
             'name' => 'required|max:255',
             'details' => 'required|string',
-            'point_required' => 'required|integer',
+            'points_required' => 'required|integer',
         ]);
-        $deal->update($validated);
+        $offer->update($validated);
 
         return redirect()->route('admin.offers.index')
-        ->with('message', 'Deal Updated successfully');
+        ->with('message', 'Offer Updated successfully');
     }
-    public function destroy(PointDeal $deal){
-        $deal->delete();
+    public function destroy(PointDeal $offer){
+        $offer->delete();
         return redirect()->route('admin.offers.index')
-        ->with('message', 'Deal deleted successfully');
+        ->with('message', 'Offer deleted successfully');
     }
 }
