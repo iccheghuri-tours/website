@@ -31,10 +31,7 @@ import { useForm } from '@inertiajs/vue3';
 }
   const handleDelete = () =>{
     if (confirm("Delete this user?")) {
-    partner.delete(`/admin/partners/${props.data.id}`, {
-    onSuccess: () => alert("Partner has deleted"),
-  
-  });
+    partner.delete(`/admin/partners/${props.data.id}`);
   }
   }
 

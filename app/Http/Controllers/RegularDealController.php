@@ -10,7 +10,7 @@ class RegularDealController extends Controller
 {
     //
     function index(){
-        $deals = RegularDeal::all();
+        $deals = RegularDeal::orderBy('created_at', 'desc')->get();
         return Inertia::render('admin/Partners',[
             'data'=>$deals
         ]);

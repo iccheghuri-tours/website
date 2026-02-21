@@ -10,7 +10,7 @@ class PointDealController extends Controller
 {
     //
     function index(){
-        $deals = PointDeal::all();
+        $deals = PointDeal::orderBy('created_at', 'desc')->get();
         return Inertia::render('admin/Offers',[
             'data'=>$deals,
         ]);

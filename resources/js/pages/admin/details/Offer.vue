@@ -30,9 +30,7 @@ import { useForm } from '@inertiajs/vue3';
 
   const handleDelete = ()=>{
     if (confirm('Delete this offer? ')){
-      offer.delete(`/admin/offers/${props.data.id}`, {
-        onSuccess: () => alert("Offer has deleted"),
-      });
+      offer.delete(`/admin/offers/${props.data.id}`);
     }
     
   }

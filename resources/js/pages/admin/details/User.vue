@@ -14,10 +14,7 @@ const handleSubmit = () => {
 }
 const handleDelete = () =>{
   if (confirm("Delete this user?")) {
-    user.delete(`/admin/users/${props.data.id}`, {
-    onSuccess: () => alert("User has deleted"),
-  
-  });
+    user.delete(`/admin/users/${props.data.id}`);
   }
 }
 </script>

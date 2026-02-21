@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     //
     public function index(){
-         $users = User::all();
+         $users = User::orderBy('created_at','desc')->get();
         return Inertia::render('admin/Users',[
             'data' => $users
         ]);
