@@ -53,7 +53,33 @@ const features = [
 
             <div class="flex items-center gap-3">
                 <template v-if="$page.props.auth.user">
-                    <Link :href="dashboard()" class="text-sm font-bold text-gray-600">Dashboard</Link>
+                    <div class="flex items-center gap-2">
+                        <Link 
+                            :href="`/points/${$page.props.auth.user.slug}`" 
+                            class="flex items-center gap-2 rounded-xl bg-[#fff4ed] p-1.5 pr-3 transition-all hover:bg-[#ffe8d9] active:scale-95"
+                        >
+                            <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-[#ff9542] text-white">
+                                <Icon icon="solar:card-2-bold" class="h-4 w-4" />
+                            </div>
+                            <div class="flex flex-col leading-none">
+                                <span class="text-[10px] font-bold text-[#ff9542]/70 uppercase tracking-tight">Points</span>
+                                <span class="text-sm font-black text-[#ff9542]">{{ $page.props.auth.user.points ?? 0 }}</span>
+                            </div>
+                        </Link>
+
+                        <Link 
+                            :href="dashboard()" 
+                            class="flex items-center gap-2 rounded-xl border border-gray-100 bg-white p-1.5 pr-3 transition-all hover:bg-gray-50 active:scale-95 shadow-sm"
+                        >
+                            <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-gray-100 text-gray-500">
+                                <Icon icon="solar:user-circle-bold" class="h-5 w-5" />
+                            </div>
+                            <div class="flex flex-col leading-none">
+                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-tight">Account</span>
+                                <span class="text-sm font-black text-gray-700">Profile</span>
+                            </div>
+                        </Link>
+                    </div>
                 </template>
                 <template v-else>
                     <Link :href="login()" class="text-sm font-bold text-gray-600">Log in</Link>
