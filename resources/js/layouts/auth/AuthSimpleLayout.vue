@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import AppLogoIcon from '@/components/AppLogoIcon.vue';
 import { home } from '@/routes';
 
 defineProps<{
@@ -10,34 +9,35 @@ defineProps<{
 </script>
 
 <template>
-    <div
-        class="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10"
-    >
-        <div class="w-full max-w-sm">
+    <div class="flex min-h-svh flex-col items-center justify-center bg-[#FDFDFC] p-6">
+        
+        <div class="fixed -top-20 -right-20 h-64 w-64 rounded-full bg-[#ff9542]/5 lg:block"></div>
+
+        <div class="w-full max-w-[400px]">
             <div class="flex flex-col gap-8">
-                <div class="flex flex-col items-center gap-4">
-                    <Link
-                        :href="home()"
-                        class="flex flex-col items-center gap-2 font-medium"
-                    >
-                        <div
-                            class="mb-1 flex h-9 w-9 items-center justify-center rounded-md"
-                        >
-                            <AppLogoIcon
-                                class="size-9 fill-current text-[var(--foreground)] dark:text-white"
-                            />
+                <div class="flex flex-col items-center gap-3">
+                    <Link :href="home()" class="transition-transform hover:scale-105">
+                        <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-xl shadow-[#ff9542]/10 ring-1 ring-gray-100">
+                             <img src="/images/logo.svg" alt="Logo" class="h-10 w-auto p-2" />
                         </div>
-                        <span class="sr-only">{{ title }}</span>
                     </Link>
-                    <div class="space-y-2 text-center">
-                        <h1 class="text-xl font-medium">{{ title }}</h1>
-                        <p class="text-center text-sm text-muted-foreground">
+                    
+                    <div class="space-y-1 text-center">
+                        <h1 class="text-2xl font-black tracking-tight text-slate-900">{{ title }}</h1>
+                        <p class="text-sm font-medium text-gray-500">
                             {{ description }}
                         </p>
                     </div>
                 </div>
-                <slot />
+
+                <div class="rounded-[2rem] border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-200/50">
+                    <slot />
+                </div>
             </div>
+            
+            <p class="mt-8 text-center text-xs text-gray-400">
+                &copy; 2026 ইচ্ছেঘুড়ি - Travel with Trust
+            </p>
         </div>
     </div>
 </template>

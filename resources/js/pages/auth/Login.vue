@@ -21,89 +21,69 @@ defineProps<{
 
 <template>
     <AuthBase
-        title="Log in to your account"
-        description="Enter your email and password below to log in"
+        title="স্বাগতম!"
+        description="আপনার অ্যাকাউন্টে লগইন করুন"
     >
         <Head title="Log in" />
 
-        <div
-            v-if="status"
-            class="mb-4 text-center text-sm font-medium text-green-600"
-        >
+        <div v-if="status" class="mb-4 text-center text-sm font-medium text-green-600">
             {{ status }}
         </div>
 
-        <Form
-            v-bind="store.form()"
-            :reset-on-success="['password']"
-            v-slot="{ errors, processing }"
-            class="flex flex-col gap-6"
-        >
-            <div class="grid gap-6">
-                <div class="grid gap-2">
-                    <Label for="email">Email address</Label>
+        <Form v-bind="store.form()" v-slot="{ errors, processing }" class="flex flex-col gap-5">
+            <div class="grid gap-5">
+                <div class="grid gap-1.5">
+                    <Label for="email" class="text-xs font-bold uppercase tracking-wider text-gray-500">Email Address</Label>
                     <Input
                         id="email"
                         type="email"
                         name="email"
+                        class="h-12 rounded-xl border-gray-100 bg-gray-50/50 focus:ring-[#ff9542]"
+                        placeholder="example@mail.com"
                         required
                         autofocus
-                        :tabindex="1"
-                        autocomplete="email"
-                        placeholder="email@example.com"
                     />
                     <InputError :message="errors.email" />
                 </div>
 
-                <div class="grid gap-2">
+                <div class="grid gap-1.5">
                     <div class="flex items-center justify-between">
-                        <Label for="password">Password</Label>
-                        <TextLink
-                            v-if="canResetPassword"
-                            :href="request()"
-                            class="text-sm"
-                            :tabindex="5"
-                        >
-                            Forgot password?
+                        <Label for="password" class="text-xs font-bold uppercase tracking-wider text-gray-500">Password</Label>
+                        <TextLink v-if="canResetPassword" :href="request()" class="text-xs font-semibold text-[#ff9542]">
+                            Forgot?
                         </TextLink>
                     </div>
                     <Input
                         id="password"
                         type="password"
                         name="password"
+                        class="h-12 rounded-xl border-gray-100 bg-gray-50/50 focus:ring-[#ff9542]"
+                        placeholder="••••••••"
                         required
-                        :tabindex="2"
-                        autocomplete="current-password"
-                        placeholder="Password"
                     />
                     <InputError :message="errors.password" />
                 </div>
 
-                <div class="flex items-center justify-between">
-                    <Label for="remember" class="flex items-center space-x-3">
-                        <Checkbox id="remember" name="remember" :tabindex="3" />
-                        <span>Remember me</span>
+                <div class="flex items-center">
+                    <Label for="remember" class="flex items-center gap-2 cursor-pointer text-sm text-gray-600">
+                        <Checkbox id="remember" name="remember" class="rounded-md border-gray-300 text-[#ff9542] focus:ring-[#ff9542]" />
+                        <span>মনে রাখুন</span>
                     </Label>
                 </div>
 
                 <Button
                     type="submit"
-                    class="mt-4 w-full"
-                    :tabindex="4"
+                    class="h-12 w-full rounded-xl bg-[#ff9542] text-base font-bold text-white shadow-lg shadow-[#ff9542]/30 hover:bg-[#e88435] transition-all active:scale-95"
                     :disabled="processing"
-                    data-test="login-button"
                 >
-                    <Spinner v-if="processing" />
-                    Log in
+                    <Spinner v-if="processing" class="mr-2 h-4 w-4" />
+                    লগইন করুন
                 </Button>
             </div>
 
-            <div
-                class="text-center text-sm text-muted-foreground"
-                v-if="canRegister"
-            >
-                Don't have an account?
-                <TextLink :href="register()" :tabindex="5">Sign up</TextLink>
+            <div class="text-center text-sm text-gray-500" v-if="canRegister">
+                অ্যাকাউন্ট নেই? 
+                <TextLink :href="register()" class="font-bold text-[#ff9542] hover:underline">জয়েন করুন</TextLink>
             </div>
         </Form>
     </AuthBase>

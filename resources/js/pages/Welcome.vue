@@ -13,10 +13,20 @@ withDefaults(
 );
 
 const features = [
-    { title: 'বাজেট ট্যুর', desc: 'অল্প টাকায় সেরা অফার', icon: 'solar:wallet-money-bold-duotone' },
-    { title: 'সেরা গাইড', desc: 'Expert local guides', icon: 'solar:map-point-wave-bold-duotone' },
-    { title: 'নিরাপদ ভ্রমণ', desc: 'Safety first always', icon: 'solar:shield-check-bold-duotone' },
-    { title: 'সহজ বুকিং', desc: 'Instant confirmation', icon: 'solar:wad-of-money-bold-duotone' },
+  { title: 'বাজেট ট্যুর', desc: 'সাধ্যের মধ্যে সেরা ঘোরার পরিকল্পনা', icon: 'solar:wallet-money-bold-duotone' },
+  { title: 'ফ্যামিলি ট্যুর', desc: 'পুরো পরিবারের জন্য আনন্দময় সফর', icon: 'solar:users-group-rounded-bold-duotone' }, // আইকন আপডেট করা হয়েছে
+  { title: 'হানিমুন প্যাকেজ', desc: 'দম্পতিদের জন্য রোমান্টিক সব আয়োজন', icon: 'solar:heart-bold-duotone' }, // আইকন আপডেট করা হয়েছে
+  { title: 'কর্পোরেট ট্যুর', desc: 'অফিস টিমের জন্য চমৎকার ভ্রমণ প্যাকেজ', icon: 'solar:buildings-bold-duotone' }, // আইকন আপডেট করা হয়েছে
+  { title: 'শিক্ষা সফর', desc: 'আনন্দ আর শেখার এক দারুণ অভিজ্ঞতা', icon: 'solar:notebook-bold-duotone' }, // আইকন আপডেট করা হয়েছে
+  { title: 'সেরা গাইড', desc: 'দক্ষ ও স্থানীয় গাইডের হাতে নিশ্চিন্ত ভ্রমণ', icon: 'solar:map-point-wave-bold-duotone' },
+  { title: 'ভিসা প্রসেসিং', desc: 'ঝামেলাহীন ও দ্রুত ভিসা সহায়তা', icon: 'solar:passport-bold-duotone' }, // আইকন আপডেট করা হয়েছে
+  { title: 'এয়ার টিকিট', desc: 'সবচেয়ে কম দামে বিমানের টিকিট', icon: 'solar:plain-bold-duotone' }, // আইকন আপডেট করা হয়েছে
+  { title: 'হোটেল ও রিসোর্ট', desc: 'আরামদায়ক থাকার সেরা সব ব্যবস্থা', icon: 'mdi:hotel' },
+  { title: 'আন্তর্জাতিক ট্যুর', desc: 'দেশ ছেড়ে বিদেশের মাটিতে নতুন অভিজ্ঞতা', icon: 'mdi:globe' },
+    { title: 'নিরাপদ ভ্রমণ', desc: 'আপনার নিরাপত্তাই আমাদের সবচেয়ে বড় লক্ষ্য', icon: 'solar:shield-check-bold-duotone' },
+      { title: 'সহজ বুকিং', desc: 'এক ক্লিকেই বুকিং করুন খুব সহজে', icon: 'solar:mouse-circle-bold-duotone' }, // আইকন আপডেট করা হয়েছে
+
+
 ];
 </script>
 
@@ -99,16 +109,16 @@ const features = [
                             <div class="absolute -inset-4 rotate-2 rounded-[2rem] bg-[#fff4ed]"></div>
                             <div class="relative flex aspect-square flex-col items-center justify-center rounded-[2rem] bg-white p-12 shadow-2xl ring-1 ring-gray-100">
                                 <div class="mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-[#ff9542]/10">
-                                    <img src="/images/logo.svg" alt="Iccheghuri" class="h-20 w-auto" />
+                                    <img src="/images/logo.svg" alt="Iccheghuri" class="h-20 w-auto p-3" />
                                 </div>
                                 <h3 class="text-4xl font-black text-gray-900">ইচ্ছেঘুড়ি</h3>
                                 <p class="mt-2 text-center text-sm font-medium text-gray-400">
                                     Budget Friendly Tour Organizer <br/> Based in Rangpur
                                 </p>
                                 
-                                <div class="absolute -bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-gray-100">
+                                <div class="absolute -bottom-10 left-1/2 flex -translate-x-1/2 items-center gap-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-gray-100 ">
                                     <div class="text-center">
-                                        <p class="text-xs font-bold text-gray-400 uppercase">Packages</p>
+                                        <p class="text-xs font-bold text-gray-400 uppercase">Successful Tours</p>
                                         <p class="font-black text-[#ff9542]">50+</p>
                                     </div>
                                     <div class="h-8 w-px bg-gray-100"></div>
@@ -125,6 +135,10 @@ const features = [
 
             <section class="bg-white px-6 py-16">
                 <div class="mx-auto max-w-7xl">
+                    <div class="mb-12 text-center">
+            <h2 class="text-3xl font-black text-slate-900 md:text-4xl">আমাদের সেবাসমূহ</h2>
+            <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-[#ff9542]"></div>
+        </div>
                     <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
                         <div v-for="feat in features" :key="feat.title" class="group text-center">
                             <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fff4ed] text-[#ff9542] transition-colors group-hover:bg-[#ff9542] group-hover:text-white">
