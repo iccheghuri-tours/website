@@ -5,7 +5,7 @@ import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator'; // Assuming you have a Separator component
+import { Separator } from '@/components/ui/separator';
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
 import { type BreadcrumbItem } from '@/types';
@@ -14,7 +14,7 @@ import { edit } from '@/routes/profile';
 import { send } from '@/routes/verification';
 import { logout } from '@/routes';
 
-// Icons (Lucide-vue-next is common with Shadcn, adjust if using different library)
+// Icons
 import { LogOut, LayoutDashboard, CreditCard, ChevronRight } from 'lucide-vue-next';
 
 type Props = {
@@ -85,8 +85,8 @@ const handleLogout = () => {
                             </div>
                         </div>
 
-                        <div v-if="mustVerifyEmail && !user.email_verified_at" class="rounded-lg bg-amber-50 p-4 dark:bg-amber-950/20">
-                            <p class="text-sm text-amber-800 dark:text-amber-400">
+                        <div v-if="mustVerifyEmail && !user.email_verified_at" class="rounded-lg bg-amber-50 p-4">
+                            <p class="text-sm text-amber-800">
                                 Your email is unverified.
                                 <Link :href="send()" as="button" class="font-semibold underline hover:no-underline">
                                     Resend verification.
@@ -119,15 +119,15 @@ const handleLogout = () => {
                         <button  
                             v-if="user.role === 'user'"
                             @click="openMembershipPage()" 
-                            class="group flex items-center justify-between rounded-xl border border-orange-200 bg-orange-50/30 p-4 text-left transition-all hover:bg-orange-50 dark:border-orange-900/30 dark:bg-orange-950/10 dark:hover:bg-orange-900/20"
+                            class="group flex items-center justify-between rounded-xl border border-orange-200 bg-orange-50/30 p-4 text-left transition-all hover:bg-orange-50"
                         >
                             <div class="flex items-center gap-4">
-                                <div class="rounded-full bg-orange-100 p-2 text-orange-600 dark:bg-orange-900/50 dark:text-orange-400">
+                                <div class="rounded-full bg-orange-100 p-2 text-orange-600">
                                     <CreditCard class="h-5 w-5" />
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold text-orange-900 dark:text-orange-100">Iccheghuri Membership</p>
-                                    <p class="text-xs text-orange-700/70 dark:text-orange-400/60">Digital card & points</p>
+                                    <p class="text-sm font-bold text-orange-900">Iccheghuri Membership</p>
+                                    <p class="text-xs text-orange-700/70">Digital card & points</p>
                                 </div>
                             </div>
                             <ChevronRight class="h-4 w-4 text-orange-400 transition-transform group-hover:translate-x-1" />
@@ -136,15 +136,15 @@ const handleLogout = () => {
                         <button 
                             v-if="user.role === 'admin'" 
                             @click="openAdminPanel()" 
-                            class="group flex items-center justify-between rounded-xl border border-blue-200 bg-blue-50/30 p-4 text-left transition-all hover:bg-blue-50 dark:border-blue-900/30 dark:bg-blue-950/10 dark:hover:bg-blue-900/20"
+                            class="group flex items-center justify-between rounded-xl border border-blue-200 bg-blue-50/30 p-4 text-left transition-all hover:bg-blue-50"
                         >
                             <div class="flex items-center gap-4">
-                                <div class="rounded-full bg-blue-100 p-2 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400">
+                                <div class="rounded-full bg-blue-100 p-2 text-blue-600">
                                     <LayoutDashboard class="h-5 w-5" />
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold text-blue-900 dark:text-blue-100">Admin Dashboard</p>
-                                    <p class="text-xs text-blue-700/70 dark:text-blue-400/60">System management</p>
+                                    <p class="text-sm font-bold text-blue-900">Admin Dashboard</p>
+                                    <p class="text-xs text-blue-700/70">System management</p>
                                 </div>
                             </div>
                             <ChevronRight class="h-4 w-4 text-blue-400 transition-transform group-hover:translate-x-1" />
@@ -154,8 +154,7 @@ const handleLogout = () => {
                     <div class="pt-4">
                         <Button 
                             variant="destructive" 
-                            variant-outline
-                            class="w-full justify-start gap-2 border-red-200 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 dark:border-red-900/50 dark:bg-red-950/20 dark:text-red-400 dark:hover:bg-red-900/30"
+                            class="w-full justify-start gap-2 border-red-200 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700"
                             @click="handleLogout()"
                         >
                             <LogOut class="h-4 w-4" />
