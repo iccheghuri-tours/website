@@ -22,7 +22,7 @@ import { useForm } from '@inertiajs/vue3';
     onError: () => alert("Invalid Input")
   });
     }else {
-        partner.post(`/admin/partners/`, {
+        partner.post(`/admin/partners`, {
     onSuccess: () => alert("Partner Created successfully"),
     onError: () => alert("Invalid Input")
   });
