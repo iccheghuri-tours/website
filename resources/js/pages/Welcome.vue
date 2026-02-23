@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import { Icon } from '@iconify/vue';
 import { dashboard, login, register } from '@/routes';
 
 withDefaults(
@@ -10,168 +11,158 @@ withDefaults(
         canRegister: true,
     },
 );
+
+const features = [
+    { title: 'বাজেট ট্যুর', desc: 'অল্প টাকায় সেরা অফার', icon: 'solar:wallet-money-bold-duotone' },
+    { title: 'সেরা গাইড', desc: 'Expert local guides', icon: 'solar:map-point-wave-bold-duotone' },
+    { title: 'নিরাপদ ভ্রমণ', desc: 'Safety first always', icon: 'solar:shield-check-bold-duotone' },
+    { title: 'সহজ বুকিং', desc: 'Instant confirmation', icon: 'solar:wad-of-money-bold-duotone' },
+];
 </script>
 
 <template>
-    <Head title="Welcome">
-        <link rel="preconnect" href="https://rsms.me/" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-    </Head>
-    <div
-        class="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-[#0a0a0a]"
-    >
-        <header
-            class="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl"
-        >
-            <nav class="flex items-center justify-end gap-4">
-                <Link
-                    v-if="$page.props.auth.user"
-                    :href="dashboard()"
-                    class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                >
-                    Dashboard
-                </Link>
+    <Head title="ইচ্ছেঘুড়ি - অল্প টাকায় সারা বাংলাদেশ ঘুরি" />
+
+    <div class="min-h-screen bg-[#FDFDFC] font-sans text-[#1b1b18]">
+        
+        <div class="bg-[#ff9542] px-6 py-2 text-center text-xs font-bold text-white lg:text-sm">
+            <div class="mx-auto flex max-w-7xl items-center justify-center gap-4">
+                <span class="flex items-center gap-1">
+                    <Icon icon="solar:phone-calling-bold" class="h-4 w-4" /> 01660160911
+                </span>
+                <span class="hidden h-3 w-px bg-white/30 sm:block"></span>
+                <span class="hidden sm:block">বাজেট ট্যুর প্যাকেজ নিয়ে আমরা আছি আপনার পাশে!</span>
+            </div>
+        </div>
+
+        <nav class="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-gray-100 bg-white/80 px-6 backdrop-blur-md">
+            <div class="flex items-center gap-2">
+                <img src="/images/logo.svg" alt="Logo" class="h-8 w-auto" />
+                <span class="text-xl font-black tracking-tight text-[#ff9542]">ইচ্ছেঘুড়ি</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <template v-if="$page.props.auth.user">
+                    <Link :href="dashboard()" class="text-sm font-bold text-gray-600">Dashboard</Link>
+                </template>
                 <template v-else>
-                    <Link
-                        :href="login()"
-                        class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                    >
-                        Log in
-                    </Link>
+                    <Link :href="login()" class="text-sm font-bold text-gray-600">Log in</Link>
                     <Link
                         v-if="canRegister"
                         :href="register()"
-                        class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                        class="rounded-full bg-[#ff9542] px-5 py-2 text-sm font-bold text-white shadow-lg shadow-[#ff9542]/20"
                     >
-                        Register
+                        Join
                     </Link>
                 </template>
-            </nav>
-        </header>
-        <div
-            class="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0"
-        >
-            <main
-                class="flex w-full max-w-[335px] flex-col-reverse overflow-hidden rounded-lg lg:max-w-4xl lg:flex-row"
-            >
-                <div
-                    class="flex-1 rounded-br-lg rounded-bl-lg bg-white p-6 pb-12 text-[13px] leading-[20px] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-tl-lg lg:rounded-br-none lg:p-20 dark:bg-[#161615] dark:text-[#EDEDEC] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"
-                >
-                    <h1 class="mb-1 font-medium">Welcome To Iccheghuri</h1>
-                    <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">
-                            Iccheghuri is Rangpur’s top choice for tours & travel.<br />
-                            Start your adventure with our recommended experiences below!
-                    </p>
-                    <ul class="mb-4 flex flex-col lg:mb-6">
-                        <li
-                            class="relative flex items-center gap-4 py-2 before:absolute before:top-1/2 before:bottom-0 before:left-[0.4rem] before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A]"
-                        >
-                            <span
-                                class="relative bg-white py-1 dark:bg-[#161615]"
-                            >
-                                <span
-                                    class="flex h-3.5 w-3.5 items-center justify-center rounded-full border border-[#e3e3e0] bg-[#FDFDFC] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] dark:border-[#3E3E3A] dark:bg-[#161615]"
-                                >
-                                    <span
-                                        class="h-1.5 w-1.5 rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A]"
-                                    />
-                                </span>
-                            </span>
-                            <span>
-                                Follow Us on
-                                <a
-                                    href="https://www.facebook.com/iccheghuri.tours"
-                                    target="_blank"
-                                    class="ml-1 inline-flex items-center space-x-1 font-medium text-[#f53003] underline underline-offset-4 dark:text-[#FF4433]"
-                                >
-                                    <span>Facebook</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-2.5 w-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                        <li
-                            class="relative flex items-center gap-4 py-2 before:absolute before:top-0 before:bottom-1/2 before:left-[0.4rem] before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A]"
-                        >
-                            <span
-                                class="relative bg-white py-1 dark:bg-[#161615]"
-                            >
-                                <span
-                                    class="flex h-3.5 w-3.5 items-center justify-center rounded-full border border-[#e3e3e0] bg-[#FDFDFC] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] dark:border-[#3E3E3A] dark:bg-[#161615]"
-                                >
-                                    <span
-                                        class="h-1.5 w-1.5 rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A]"
-                                    />
-                                </span>
-                            </span>
-                            <span>
-                                Contact the 
-                                <a
-                                    href="https://github.com/tajimz"
-                                    target="_blank"
-                                    class="ml-1 inline-flex items-center space-x-1 font-medium text-[#f53003] underline underline-offset-4 dark:text-[#FF4433]"
-                                >
-                                    <span>Developer</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-2.5 w-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                    </ul>
-                    <ul class="flex gap-3 text-sm leading-normal">
-                        <li>
-                            <a
-                                href="https://facebook.com/iccheghuri.tours"
-                                target="_blank"
-                                class="inline-block rounded-sm border border-black bg-[#1b1b18] px-5 py-1.5 text-sm leading-normal text-white hover:border-black hover:bg-black dark:border-[#eeeeec] dark:bg-[#eeeeec] dark:text-[#1C1C1A] dark:hover:border-white dark:hover:bg-white"
-                            >
-                                Book a Tour Now
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="relative -mb-px aspect-335/376 w-full shrink-0 overflow-hidden rounded-t-lg bg-[#fff2f2] lg:mb-0 lg:-ml-px lg:aspect-auto lg:w-[438px] lg:rounded-t-none lg:rounded-r-lg dark:bg-[#1D0002] border-2
-                    flex flex-col items-center justify-center text-center p-6">
-    
-                <div class="mb-4">
-                    <img
-                        src="/images/logo.svg"
-                        alt="Iccheghuri Logo"
-                        class="h-16 w-auto object-contain lg:h-20"
-                    />
-                </div>
+            </div>
+        </nav>
 
-                <p class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight">
-                    ইচ্ছেঘুড়ি 
+        <main>
+            <section class="relative overflow-hidden px-6 py-12 lg:py-24">
+                <div class="mx-auto max-w-7xl">
+                    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+                        
+                        <div class="z-10 text-center lg:text-left">
+                            <h2 class="mb-4 inline-block rounded-lg bg-[#fff4ed] px-3 py-1 text-sm font-bold text-[#ff9542]">
+                                #1 Budget Travel Agency in Rangpur
+                            </h2>
+                            <h1 class="mb-6 text-4xl font-black leading-tight text-slate-900 lg:text-6xl">
+                                অল্প টাকায় সারা <br/> 
+                                <span class="text-[#ff9542]">বাংলাদেশ ঘুরি</span>, <br/>
+                                সাথে আছে ইচ্ছেঘুড়ি !
+                            </h1>
+                            <p class="mb-10 text-lg text-gray-500 lg:max-w-md">
+                                Experience Bangladesh like never before. We offer the best budget-friendly tour packages for students, families, and solo travelers.
+                            </p>
+
+                            <div class="flex flex-col gap-4 sm:flex-row lg:justify-start">
+                                <a
+                                    href="https://facebook.com/iccheghuri.tours"
+                                    target="_blank"
+                                    class="flex items-center justify-center gap-2 rounded-2xl bg-[#ff9542] px-8 py-4 text-lg font-bold text-white shadow-xl shadow-[#ff9542]/30 transition-transform hover:scale-[1.02]"
+                                >
+                                    <Icon icon="solar:bag-check-bold" class="h-6 w-6" />
+                                    বুকিং করুন
+                                </a>
+                                <a
+                                    :href="'tel:01660160911'"
+                                    class="flex items-center justify-center gap-2 rounded-2xl border-2 border-gray-100 bg-white px-8 py-4 text-lg font-bold text-gray-700 transition-colors hover:bg-gray-50"
+                                >
+                                    <Icon icon="solar:phone-linear" class="h-6 w-6 text-[#ff9542]" />
+                                    কল করুন
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -inset-4 rotate-2 rounded-[2rem] bg-[#fff4ed]"></div>
+                            <div class="relative flex aspect-square flex-col items-center justify-center rounded-[2rem] bg-white p-12 shadow-2xl ring-1 ring-gray-100">
+                                <div class="mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-[#ff9542]/10">
+                                    <img src="/images/logo.svg" alt="Iccheghuri" class="h-20 w-auto" />
+                                </div>
+                                <h3 class="text-4xl font-black text-gray-900">ইচ্ছেঘুড়ি</h3>
+                                <p class="mt-2 text-center text-sm font-medium text-gray-400">
+                                    Budget Friendly Tour Organizer <br/> Based in Rangpur
+                                </p>
+                                
+                                <div class="absolute -bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-gray-100">
+                                    <div class="text-center">
+                                        <p class="text-xs font-bold text-gray-400 uppercase">Packages</p>
+                                        <p class="font-black text-[#ff9542]">50+</p>
+                                    </div>
+                                    <div class="h-8 w-px bg-gray-100"></div>
+                                    <div class="text-center">
+                                        <p class="text-xs font-bold text-gray-400 uppercase">Happy Clients</p>
+                                        <p class="font-black text-[#ff9542]">2k+</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white px-6 py-16">
+                <div class="mx-auto max-w-7xl">
+                    <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+                        <div v-for="feat in features" :key="feat.title" class="group text-center">
+                            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fff4ed] text-[#ff9542] transition-colors group-hover:bg-[#ff9542] group-hover:text-white">
+                                <Icon :icon="feat.icon" class="h-8 w-8" />
+                            </div>
+                            <h4 class="font-bold text-gray-900">{{ feat.title }}</h4>
+                            <p class="text-xs text-gray-500">{{ feat.desc }}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-gray-100 bg-white px-6 py-12">
+            <div class="mx-auto max-w-7xl text-center">
+                <div class="mb-6 flex justify-center gap-6">
+                    <a href="https://facebook.com/iccheghuri.tours" target="_blank" class="text-gray-400 hover:text-[#ff9542]">
+                        <Icon icon="brandico:facebook-rect" class="h-6 w-6" />
+                    </a>
+                    <a href="https://facebook.com/iccheghuri.tours" target="_blank" class="text-gray-400 hover:text-[#ff9542]">
+                        <Icon icon="mdi:instagram" class="h-6 w-6" />
+                    </a>
+                    
+                </div>
+                <p class="text-sm text-gray-400">
+                    &copy; 2026 ইচ্ছেঘুড়ি (Iccheghuri). Developed By 
+                    <a href="https://facebook.com/trtajim" target="_blank" class=" text-[#ff9542]">
+                        Tajim
+                    </a>. 
                 </p>
             </div>
-                
-            </main>
-        </div>
-        <div class="hidden h-14.5 lg:block"></div>
+        </footer>
     </div>
 </template>
+
+<style scoped>
+/* Optional: Soft page transitions */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+</style>
