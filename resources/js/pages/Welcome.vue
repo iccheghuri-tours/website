@@ -182,10 +182,13 @@ const features = [
             <div class="mx-auto max-w-7xl text-center">
                 <div class="mb-6 flex justify-center gap-6">
                     <a href="https://facebook.com/iccheghuri.tours" target="_blank" class="text-gray-400 hover:text-[#ff9542]">
-                        <Icon icon="brandico:facebook-rect" class="h-6 w-6" />
+                        <Icon icon="mdi:facebook" class="h-6 w-6" />
                     </a>
-                    <a href="https://facebook.com/iccheghuri.tours" target="_blank" class="text-gray-400 hover:text-[#ff9542]">
+                    <a href="https://www.instagram.com/iccheghuri.tours/" target="_blank" class="text-gray-400 hover:text-[#ff9542]">
                         <Icon icon="mdi:instagram" class="h-6 w-6" />
+                    </a>
+                    <a href="https://wa.me/8801660160911" target="_blank" class="text-gray-400 hover:text-[#ff9542]">
+                        <Icon icon="mdi:whatsapp" class="h-6 w-6" />
                     </a>
                     
                 </div>
