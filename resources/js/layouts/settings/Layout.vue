@@ -23,11 +23,7 @@ const sidebarNavItems: NavItem[] = [
     {
         title: 'Two-Factor Auth',
         href: show(),
-    },
-    {
-        title: 'Appearance',
-        href: editAppearance(),
-    },
+    }
 ];
 
 const { isCurrentUrl } = useCurrentUrl();

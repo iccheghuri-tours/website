@@ -2,7 +2,7 @@
 import { Icon } from '@iconify/vue';
 import logo from '@/assets/images/logo.png'
 import { router } from '@inertiajs/vue3';
-defineProps({
+const props = defineProps({
   appName: {
     type: String,
     default: 'Iccheghuri Tours'
@@ -22,6 +22,7 @@ defineProps({
 });
 
 function goToProfile() {
+  props.closeFullScreen();
   router.get('/settings/profile');
 }
 </script>

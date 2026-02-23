@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Form, Head, Link, router, usePage } from '@inertiajs/vue3';
-// import DeleteUser from '@/components/DeleteUser.vue';
 import Heading from '@/components/Heading.vue';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator'; // Assuming you have a Separator component
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
 import { type BreadcrumbItem } from '@/types';
@@ -13,6 +13,9 @@ import ProfileController from '@/actions/App/Http/Controllers/Settings/ProfileCo
 import { edit } from '@/routes/profile';
 import { send } from '@/routes/verification';
 import { logout } from '@/routes';
+
+// Icons (Lucide-vue-next is common with Shadcn, adjust if using different library)
+import { LogOut, LayoutDashboard, CreditCard, ChevronRight } from 'lucide-vue-next';
 
 type Props = {
     mustVerifyEmail: boolean;
@@ -40,8 +43,7 @@ function openAdminPanel(){
 
 const handleLogout = () => {
     router.flushAll();
-    router.post(logout(), {
-    });
+    router.post(logout());
 };
 </script>
 
@@ -49,136 +51,119 @@ const handleLogout = () => {
     <AppLayout :breadcrumbs="breadcrumbItems">
         <Head title="Profile settings" />
 
-        <h1 class="sr-only">Profile Settings</h1>
-
         <SettingsLayout>
-            <div class="flex flex-col space-y-6">
-                <Heading
-                    variant="small"
-                    title="Profile information"
-                    description="Update your name and email address"
-                />
+            <div class="space-y-10">
+                <section class="space-y-6">
+                    <Heading
+                        variant="small"
+                        title="Profile Information"
+                        description="Update your personal details and contact information."
+                    />
 
-                <Form
-                    v-bind="ProfileController.update.form()"
-                    class="space-y-6"
-                    v-slot="{ errors, processing, recentlySuccessful }"
-                >
-                    <div class="grid gap-2">
-                        <Label for="name">Name</Label>
-                        <Input
-                            id="name"
-                            class="mt-1 block w-full"
-                            name="name"
-                            :default-value="user.name"
-                            required
-                            autocomplete="name"
-                            placeholder="Full name"
-                        />
-                        <InputError class="mt-2" :message="errors.name" />
-                    </div>
+                    <Form
+                        v-bind="ProfileController.update.form()"
+                        class="max-w-xl space-y-6"
+                        v-slot="{ errors, processing, recentlySuccessful }"
+                    >
+                        <div class="grid gap-4">
+                            <div class="grid gap-2">
+                                <Label for="name">Name</Label>
+                                <Input id="name" name="name" :default-value="user.name" required autocomplete="name" />
+                                <InputError :message="errors.name" />
+                            </div>
 
-                    <div class="grid gap-2">
-                        <Label for="email">Email address</Label>
-                        <Input
-                            id="email"
-                            type="email"
-                            class="mt-1 block w-full"
-                            name="email"
-                            :default-value="user.email"
-                            required
-                            autocomplete="username"
-                            placeholder="Email address"
-                        />
-                        <InputError class="mt-2" :message="errors.email" />
-                    </div>
+                            <div class="grid gap-2">
+                                <Label for="email">Email address</Label>
+                                <Input id="email" type="email" name="email" :default-value="user.email" required />
+                                <InputError :message="errors.email" />
+                            </div>
 
-                    <div class="grid gap-2">
-                        <Label for="phone">Phone number</Label>
-                        <Input
-                            id="phone"
-                            type="tel"
-                            class="mt-1 block w-full"
-                            name="phone"
-                            :default-value="user.phone || ''"
-                            required
-                            autocomplete="username"
-                            placeholder="Phone number"
-                        />
-                        <InputError class="mt-2" :message="errors.phone" />
-                    </div>
-
-                    <div v-if="mustVerifyEmail && !user.email_verified_at">
-                        <p class="-mt-4 text-sm text-muted-foreground">
-                            Your email address is unverified.
-                            <Link
-                                :href="send()"
-                                as="button"
-                                class="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
-                            >
-                                Click here to resend the verification email.
-                            </Link>
-                        </p>
-
-                        <div
-                            v-if="status === 'verification-link-sent'"
-                            class="mt-2 text-sm font-medium text-green-600"
-                        >
-                            A new verification link has been sent to your email
-                            address.
+                            <div class="grid gap-2">
+                                <Label for="phone">Phone number</Label>
+                                <Input id="phone" type="tel" name="phone" :default-value="user.phone || ''" required />
+                                <InputError :message="errors.phone" />
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="flex items-center gap-4">
-                        <Button
-                            :disabled="processing"
-                            data-test="update-profile-button"
-                            >Save</Button
-                        >
-
-                        <Transition
-                            enter-active-class="transition ease-in-out"
-                            enter-from-class="opacity-0"
-                            leave-active-class="transition ease-in-out"
-                            leave-to-class="opacity-0"
-                        >
-                            <p
-                                v-show="recentlySuccessful"
-                                class="text-sm text-neutral-600"
-                            >
-                                Saved.
+                        <div v-if="mustVerifyEmail && !user.email_verified_at" class="rounded-lg bg-amber-50 p-4 dark:bg-amber-950/20">
+                            <p class="text-sm text-amber-800 dark:text-amber-400">
+                                Your email is unverified.
+                                <Link :href="send()" as="button" class="font-semibold underline hover:no-underline">
+                                    Resend verification.
+                                </Link>
                             </p>
-                        </Transition>
-                    </div>
-                </Form>
-            </div>
+                            <div v-if="status === 'verification-link-sent'" class="mt-2 text-xs font-medium text-green-600">
+                                A new link has been sent.
+                            </div>
+                        </div>
 
-            <!-- <DeleteUser /> -->
-            <div class="grid gap-4 sm:grid-cols-2">
-                <div  
-                    v-if="user.role === 'user'"
-                    @click="openMembershipPage()" 
-                    class="group cursor-pointer rounded-xl border border-orange-200 bg-orange-50/50 p-5 transition-all hover:bg-orange-100 dark:border-orange-900/30 dark:bg-orange-950/20 dark:hover:bg-orange-900/30"
-                >
-                    <div class="flex flex-col gap-1">
-                        <span class="text-sm font-bold tracking-tight text-orange-600 dark:text-orange-400">Iccheghuri Membership</span>
-                        <p class="text-xs text-orange-700/70 dark:text-orange-500/60">Access your digital card and points</p>
-                    </div>
-                </div>
+                        <div class="flex items-center gap-4">
+                            <Button :disabled="processing">Save Changes</Button>
+                            <Transition enter-active-class="transition ease-in-out" enter-from-class="opacity-0" leave-active-class="transition ease-in-out" leave-to-class="opacity-0">
+                                <p v-show="recentlySuccessful" class="text-sm text-muted-foreground">Saved successfully.</p>
+                            </Transition>
+                        </div>
+                    </Form>
+                </section>
 
-                <div 
-                    v-if="user.role === 'admin'" 
-                    @click="openAdminPanel()" 
-                    class="group cursor-pointer rounded-xl border border-blue-200 bg-blue-50/50 p-5 transition-all hover:bg-blue-100 dark:border-blue-900/30 dark:bg-blue-950/20 dark:hover:bg-blue-900/30"
-                >
-                    <div class="flex flex-col gap-1">
-                        <span class="text-sm font-bold tracking-tight text-blue-600 dark:text-blue-400">Admin Dashboard</span>
-                        <p class="text-xs text-blue-700/70 dark:text-blue-500/60">Manage users and system settings</p>
+                <Separator />
+
+                <section class="space-y-6">
+                    <Heading
+                        variant="small"
+                        title="Account Actions"
+                        description="Quick access to your membership or administrative tools."
+                    />
+                    
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <button  
+                            v-if="user.role === 'user'"
+                            @click="openMembershipPage()" 
+                            class="group flex items-center justify-between rounded-xl border border-orange-200 bg-orange-50/30 p-4 text-left transition-all hover:bg-orange-50 dark:border-orange-900/30 dark:bg-orange-950/10 dark:hover:bg-orange-900/20"
+                        >
+                            <div class="flex items-center gap-4">
+                                <div class="rounded-full bg-orange-100 p-2 text-orange-600 dark:bg-orange-900/50 dark:text-orange-400">
+                                    <CreditCard class="h-5 w-5" />
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-orange-900 dark:text-orange-100">Iccheghuri Membership</p>
+                                    <p class="text-xs text-orange-700/70 dark:text-orange-400/60">Digital card & points</p>
+                                </div>
+                            </div>
+                            <ChevronRight class="h-4 w-4 text-orange-400 transition-transform group-hover:translate-x-1" />
+                        </button>
+
+                        <button 
+                            v-if="user.role === 'admin'" 
+                            @click="openAdminPanel()" 
+                            class="group flex items-center justify-between rounded-xl border border-blue-200 bg-blue-50/30 p-4 text-left transition-all hover:bg-blue-50 dark:border-blue-900/30 dark:bg-blue-950/10 dark:hover:bg-blue-900/20"
+                        >
+                            <div class="flex items-center gap-4">
+                                <div class="rounded-full bg-blue-100 p-2 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400">
+                                    <LayoutDashboard class="h-5 w-5" />
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-blue-900 dark:text-blue-100">Admin Dashboard</p>
+                                    <p class="text-xs text-blue-700/70 dark:text-blue-400/60">System management</p>
+                                </div>
+                            </div>
+                            <ChevronRight class="h-4 w-4 text-blue-400 transition-transform group-hover:translate-x-1" />
+                        </button>
                     </div>
-                </div>
+
+                    <div class="pt-4">
+                        <Button 
+                            variant="destructive" 
+                            variant-outline
+                            class="w-full justify-start gap-2 border-red-200 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 dark:border-red-900/50 dark:bg-red-950/20 dark:text-red-400 dark:hover:bg-red-900/30"
+                            @click="handleLogout()"
+                        >
+                            <LogOut class="h-4 w-4" />
+                            Log Out
+                        </Button>
+                    </div>
+                </section>
             </div>
-            <button class="bg-red-950 text-white rounded w-full p-3 font-bold" @click="handleLogout()">Log Out</button>
         </SettingsLayout>
     </AppLayout>
 </template>
-    
