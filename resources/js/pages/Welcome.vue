@@ -114,12 +114,12 @@ const features = [
 
                             <div class="flex flex-col gap-4 sm:flex-row lg:justify-start">
                                 <a
-                                    href="https://facebook.com/iccheghuri.tours"
+                                    href="https://packages.iccheghuritours.com"
                                     target="_blank"
                                     class="flex items-center justify-center gap-2 rounded-2xl bg-[#ff9542] px-8 py-4 text-lg font-bold text-white shadow-xl shadow-[#ff9542]/30 transition-transform hover:scale-[1.02]"
                                 >
                                     <Icon icon="solar:bag-check-bold" class="h-6 w-6" />
-                                    বুকিং করুন
+                                    আমাদের প্যাকেজসমূহ 
                                 </a>
                                 <a
                                     :href="'tel:01660160911'"
