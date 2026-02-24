@@ -27,7 +27,7 @@ const openSheet = () => {
   >
     <div class="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-xl border border-[#f39221]/20 bg-white">
       <img 
-        :src="image" 
+        :src="`/storage/${image}`"
         :alt="name"
         class="h-full w-full object-cover"
       />

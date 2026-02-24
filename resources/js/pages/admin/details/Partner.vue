@@ -1,6 +1,7 @@
 <script setup>
 import AdminLayout from '@/pages/AdminLayout.vue';
 import { useForm } from '@inertiajs/vue3';
+import axios from 'axios';
 
   const props = defineProps({
     data: Object,
@@ -12,7 +13,8 @@ import { useForm } from '@inertiajs/vue3';
     location: props.data?.location,
     phone:props.data?.phone,
     facebook: props.data?.facebook,
-    discount_percentage: props.data?.discount_percentage
+    discount_percentage: props.data?.discount_percentage,
+    image: props.data?.image
   });
 
   const handleSubmit = () => {
@@ -34,6 +36,18 @@ import { useForm } from '@inertiajs/vue3';
     partner.delete(`/admin/partners/${props.data.id}`);
   }
   }
+
+const handleImageChange = async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  const body = new FormData();
+  body.append('image',file);
+  body.append('delete',partner.image);
+  const {data} = await axios.post('/admin/upload-image',body);
+  partner.image = data.path;
+
+
+};
 
 </script>
 
@@ -104,6 +118,24 @@ import { useForm } from '@inertiajs/vue3';
       class="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-gray-900"
     >
   </div>
+  <div class="flex flex-col gap-1.5 sm:col-span-1">
+  <label class="text-sm font-medium text-gray-600">Partner Image</label>
+  
+  <div v-if="partner.image" class="mb-2">
+    <img 
+      :src="`/storage/${partner.image}`"
+      alt="Partner Preview" 
+      class="h-20 w-20 object-cover rounded-md border border-gray-200"
+    >
+  </div>
+
+  <input 
+    type="file" 
+    @change="handleImageChange"
+
+    class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+  >
+</div>
 </div>
 
         <div class="pt-4">

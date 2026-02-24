@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoyaltiController;
 use App\Http\Controllers\PointDealController;
 use App\Http\Controllers\RegularDealController;
@@ -32,4 +33,5 @@ Route::prefix('/admin')->middleware(['auth', AdminMiddleware::class])->name('adm
     Route::resource('/users',UserController::class);
     Route::resource('/partners',RegularDealController::class);
     Route::resource('/offers',PointDealController::class);
+    Route::post('/upload-image', [ImageController::class, 'store'])->name('image.store');
 });

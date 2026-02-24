@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('details');
-            $table->string('image')->default("https://picsum.photos/200/300");
+            $table->string('image')->nullable();
             $table->string('location');
             $table->string('phone');
             $table->string('facebook');

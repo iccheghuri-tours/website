@@ -36,6 +36,7 @@ class RegularDealController extends Controller
             'facebook' => 'required|url',
             'location' => 'required|url',
             'discount_percentage' => 'required|integer',
+            'image' => 'required|string',
         ]);
         $partner->update($validated);
 
@@ -51,6 +52,7 @@ class RegularDealController extends Controller
             'facebook' => 'required|url',
             'location' => 'required|url',
             'discount_percentage' => 'required|integer',
+            'image' => 'required|string',
         ]);
         RegularDeal::create($validated);
 

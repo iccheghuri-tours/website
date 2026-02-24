@@ -18,8 +18,8 @@
         <main class="flex-1 w-full max-w-2xl mx-auto p-6 pb-20">
           
           <div class="flex flex-col items-center text-center mt-4 mb-8">
-            <div class="w-32 h-32 rounded-3xl bg-white border border-orange-100 p-4 mb-4 shadow-xl shadow-orange-500/5">
-              <img :src="image" :alt="name" class="w-full h-full object-contain rounded-2xl" />
+            <div class="w-32 h-32 rounded-3xl bg-white border border-orange-100 overflow-hidden mb-4 shadow-xl shadow-orange-500/5">
+              <img :src="`/storage/${image}`" :alt="name" class="w-full h-full object-contain rounded-2xl" />
             </div>
             <h1 class="text-3xl font-bold tracking-tight text-slate-900 mb-1">{{ name }}</h1>
             <p class="text-slate-500 text-sm font-medium">Official Partner</p>
