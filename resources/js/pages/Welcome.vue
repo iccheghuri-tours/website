@@ -13,18 +13,18 @@ withDefaults(
 );
 
 const features = [
-  { title: 'বাজেট ট্যুর', desc: 'সাধ্যের মধ্যে সেরা ঘোরার পরিকল্পনা', icon: 'solar:wallet-money-bold-duotone' },
-  { title: 'ফ্যামিলি ট্যুর', desc: 'পুরো পরিবারের জন্য আনন্দময় সফর', icon: 'solar:users-group-rounded-bold-duotone' }, // আইকন আপডেট করা হয়েছে
-  { title: 'হানিমুন প্যাকেজ', desc: 'দম্পতিদের জন্য রোমান্টিক সব আয়োজন', icon: 'solar:heart-bold-duotone' }, // আইকন আপডেট করা হয়েছে
-  { title: 'কর্পোরেট ট্যুর', desc: 'অফিস টিমের জন্য চমৎকার ভ্রমণ প্যাকেজ', icon: 'solar:buildings-bold-duotone' }, // আইকন আপডেট করা হয়েছে
-  { title: 'শিক্ষা সফর', desc: 'আনন্দ আর শেখার এক দারুণ অভিজ্ঞতা', icon: 'solar:notebook-bold-duotone' }, // আইকন আপডেট করা হয়েছে
-  { title: 'সেরা গাইড', desc: 'দক্ষ ও স্থানীয় গাইডের হাতে নিশ্চিন্ত ভ্রমণ', icon: 'solar:map-point-wave-bold-duotone' },
-  { title: 'ভিসা প্রসেসিং', desc: 'ঝামেলাহীন ও দ্রুত ভিসা সহায়তা', icon: 'solar:passport-bold-duotone' }, // আইকন আপডেট করা হয়েছে
-  { title: 'এয়ার টিকিট', desc: 'সবচেয়ে কম দামে বিমানের টিকিট', icon: 'solar:plain-bold-duotone' }, // আইকন আপডেট করা হয়েছে
+  { title: 'বাজেট ট্যুর', desc: 'সাধ্যের মধ্যে সেরা ভ্রমণ প্যাকেজ ', icon: 'solar:wallet-money-bold-duotone' },
+  { title: 'ফ্যামিলি ট্যুর', desc: 'পুরো পরিবারের জন্য আনন্দময় সফর', icon: 'solar:users-group-rounded-bold-duotone' }, 
+  { title: 'হানিমুন প্যাকেজ', desc: 'কাপলদের জন্য রোমান্টিক সব আয়োজন', icon: 'solar:heart-bold-duotone' }, 
+  { title: 'কর্পোরেট ট্যুর', desc: 'অফিস টিমের জন্য চমৎকার ভ্রমণ প্যাকেজ', icon: 'solar:buildings-bold-duotone' },
+  { title: 'শিক্ষা সফর', desc: 'আনন্দ আর শেখার এক দারুণ অভিজ্ঞতা', icon: 'solar:notebook-bold-duotone' }, 
+  { title: 'সেরা গাইড', desc: 'দক্ষ ও স্থানীয় গাইডের সাথে নিশ্চিন্ত ভ্রমণ', icon: 'solar:map-point-wave-bold-duotone' },
+  { title: 'ভিসা প্রসেসিং', desc: 'ঝামেলাহীন ও দ্রুত ভিসা সহায়তা', icon: 'solar:passport-bold-duotone' }, 
+  { title: 'এয়ার টিকিট', desc: 'সবচেয়ে কম দামে বিমানের টিকিট', icon: 'solar:plain-bold-duotone' }, 
   { title: 'হোটেল ও রিসোর্ট', desc: 'আরামদায়ক থাকার সেরা সব ব্যবস্থা', icon: 'mdi:hotel' },
   { title: 'আন্তর্জাতিক ট্যুর', desc: 'দেশ ছেড়ে বিদেশের মাটিতে নতুন অভিজ্ঞতা', icon: 'mdi:globe' },
     { title: 'নিরাপদ ভ্রমণ', desc: 'আপনার নিরাপত্তাই আমাদের সবচেয়ে বড় লক্ষ্য', icon: 'solar:shield-check-bold-duotone' },
-      { title: 'সহজ বুকিং', desc: 'এক ক্লিকেই বুকিং করুন খুব সহজে', icon: 'solar:mouse-circle-bold-duotone' }, // আইকন আপডেট করা হয়েছে
+      { title: 'সহজ বুকিং', desc: 'এক ক্লিকেই বুকিং করুন খুব সহজে', icon: 'solar:mouse-circle-bold-duotone' }, 
 
 
 ];
@@ -36,13 +36,7 @@ const features = [
     <div class="min-h-screen bg-[#FDFDFC] font-sans text-[#1b1b18]">
         
         <div class="bg-[#ff9542] px-6 py-2 text-center text-xs font-bold text-white lg:text-sm">
-            <div class="mx-auto flex max-w-7xl items-center justify-center gap-4">
-                <span class="flex items-center gap-1">
-                    <Icon icon="solar:phone-calling-bold" class="h-4 w-4" /> 01660160911
-                </span>
-                <span class="hidden h-3 w-px bg-white/30 sm:block"></span>
-                <span class="hidden sm:block">বাজেট ট্যুর প্যাকেজ নিয়ে আমরা আছি আপনার পাশে!</span>
-            </div>
+            
         </div>
 
         <nav class="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-gray-100 bg-white/80 px-6 backdrop-blur-md">
@@ -123,10 +117,18 @@ const features = [
                                 </a>
                                 <a
                                     :href="'tel:01660160911'"
-                                    class="flex items-center justify-center gap-2 rounded-2xl border-2 border-gray-100 bg-white px-8 py-4 text-lg font-bold text-gray-700 transition-colors hover:bg-gray-50"
+                                    class="flex items-center justify-center gap-2 rounded-2xl border-2 border-orange-100 bg-white px-8 py-4 text-lg font-bold text-gray-700 transition-colors hover:bg-gray-50"
                                 >
                                     <Icon icon="solar:phone-linear" class="h-6 w-6 text-[#ff9542]" />
                                     কল করুন
+                                </a>
+                                <a
+                                    href="https://wa.me/8801622347435"
+                                    target="_blank"
+                                    class="flex items-center justify-center gap-2 rounded-2xl border-2 border-[#25D366]/20 bg-white px-8 py-4 text-lg font-bold text-gray-700 transition-all hover:bg-[#25D366] hover:text-white"
+                                >
+                                    <Icon icon="logos:whatsapp-icon" class="h-6 w-6" />
+                                    হোয়াটসঅ্যাপ
                                 </a>
                             </div>
                         </div>
@@ -193,10 +195,7 @@ const features = [
                     
                 </div>
                 <p class="text-sm text-gray-400">
-                    &copy; 2026 ইচ্ছেঘুড়ি (Iccheghuri). Developed By 
-                    <a href="https://facebook.com/trtajim" target="_blank" class=" text-[#ff9542]">
-                        Tajim
-                    </a>. 
+                    &copy; 2026 ইচ্ছেঘুড়ি (Iccheghuri).
                 </p>
             </div>
         </footer>
