@@ -17,12 +17,18 @@ import { useForm } from '@inertiajs/vue3';
     if (props.mode == 'edit'){
       offer.patch(`/admin/offers/${props.data.id}`, {
       onSuccess: ()=> alert("Changes saved successfully"),
-      onError: ()=> alert("Invalid Input")
+      onError: (errors) => {
+        const firstError = Object.values(errors)[0];
+        alert(firstError);
+    }
     });
     }else {
       offer.post(`/admin/offers`, {
       onSuccess: ()=> alert("Offer created successfully"),
-      onError: ()=> alert("Invalid Input")
+      onError: (errors) => {
+        const firstError = Object.values(errors)[0];
+        alert(firstError);
+    }
     });
     }
     

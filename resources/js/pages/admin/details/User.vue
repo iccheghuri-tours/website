@@ -19,15 +19,20 @@ const handleSubmit = () => {
   if (props.mode === 'edit'){
     user.patch(`/admin/users/${props.data.id}`, {
         onSuccess: () => alert("Changes Saved Successfully"),
-        onError: (errors) => alert("Invalid Input")
+        onError: (errors) => {
+        const firstError = Object.values(errors)[0];
+        alert(firstError);
+    }
       
       });
   }else if (props.mode === 'create'){
     user.post(`/admin/users`, {
     onSuccess: () => alert("User Created Successfully"),
-    onError: (errors) => alert("Invalid Input")
+    onError: (errors) => {
+         const firstError = Object.values(errors)[0];
+        alert(firstError);
+    }
 
-  
   });
   }
   

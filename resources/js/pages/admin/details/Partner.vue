@@ -21,12 +21,18 @@ import axios from 'axios';
     if (props.mode === 'edit'){
           partner.patch(`/admin/partners/${props.data.id}`, {
     onSuccess: () => alert("Changes saved successfully"),
-    onError: () => alert("Invalid Input")
+    onError: (errors) => {
+        const firstError = Object.values(errors)[0];
+        alert(firstError);
+    }
   });
     }else {
         partner.post(`/admin/partners`, {
     onSuccess: () => alert("Partner Created successfully"),
-    onError: () => alert("Invalid Input")
+    onError: (errors) => {
+        const firstError = Object.values(errors)[0];
+        alert(firstError);
+    }
   });
     }
 
