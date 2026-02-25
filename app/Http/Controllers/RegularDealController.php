@@ -32,7 +32,7 @@ class RegularDealController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'details' => 'required|string',
-            'phone' => 'required|string',
+            'phone' => 'required|string|size:11|unique:regular_deals,phone,'.$partner->id,
             'facebook' => 'required|url',
             'location' => 'required|url',
             'discount_percentage' => 'required|integer',
@@ -48,7 +48,7 @@ class RegularDealController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'details' => 'required|string',
-            'phone' => 'required|string',
+            'phone' => 'required|string|size:11|unique:regular_deals,phone',
             'facebook' => 'required|url',
             'location' => 'required|url',
             'discount_percentage' => 'required|integer',

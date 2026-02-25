@@ -34,10 +34,10 @@ class UserController extends Controller
     public function update(Request $request, User $user){
         $validated = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|string|email|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
             'points' => 'required|integer',
             'completed_tours' => 'required|integer',
-            'phone' => 'required|string|size:11',
+            'phone' => 'required|string|size:11|unique:users,phone,'.$user->id,
             'role' => 'required|string|in:admin,user',
         ]);
         $user->update($validated);
@@ -51,7 +51,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email',
             'points' => 'required|integer',
             'completed_tours' => 'required|integer',
-            'phone' => 'required|string|size:11',
+            'phone' => 'required|string|size:11|unique:users,phone',
             'role' => 'required|string|in:admin,user',
         ]);
         $validated['email_verified_at'] = now();
