@@ -55,7 +55,7 @@ const features = [
                             class="flex items-center gap-2 rounded-2xl bg-[#fff4ed] p-1.5 pr-3 transition-all hover:bg-[#ffe8d9] active:scale-95 sm:pr-4"
                         >
                             <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-[#ff9542] text-white shadow-sm sm:h-8 sm:w-8 sm:rounded-xl">
-                                <Icon icon="solar:star-fall-minimalistic-bold" class="h-4 w-4 sm:h-5 sm:w-5" />
+                                <Icon icon="solar:card-2-bold" class="h-4 w-4 sm:h-5 sm:w-5" />
                             </div>
                             <div class="flex flex-col">
                                 <span class="text-[8px] font-black uppercase text-[#ff9542]/60 sm:text-[9px]">Points</span>
@@ -96,17 +96,17 @@ const features = [
                             <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-[#fff4ed] py-1.5 pl-2 pr-4 text-xs font-bold text-[#ff9542]">
                                 #1 Budget Travel Agency in Rangpur
                             </div>
-                            <h1 class="mb-6 text-5xl font-black leading-[1.15] text-slate-900 lg:text-7xl">
+                            <h1 class="mb-6 text-4xl font-black leading-[1.15] text-slate-900 lg:text-7xl">
                                 অল্প টাকায় সারা <br/> 
                                 <span class="relative">
                                     <span class="relative z-10 text-[#ff9542]">বাংলাদেশ ঘুরি</span>
-                                    <svg class="absolute -bottom-2 left-0 z-0 w-full" height="12" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="absolute -bottom-2 left-0 z-0 w-full hidden md:block" height="12" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 10C50 2 150 2 198 10" stroke="#ff9542" stroke-width="4" stroke-linecap="round"/>
                                     </svg>
                                 </span>, <br/>
-                                সাথে আছে <span class="text-[#ff9542]">ইচ্ছেঘুড়ি</span> !
+                                সাথে আছে <span class="text-[#ff9542]">ইচ্ছেঘুড়ি</span>
                             </h1>
-                            <p class="mb-10 text-lg leading-relaxed text-gray-500 lg:max-w-md">
+                            <p class="mb-10 text-md leading-relaxed text-gray-500 lg:max-w-md">
                                 Experience Bangladesh like never before. We offer the best budget-friendly tour packages for students, families, and solo travelers.
                             </p>
 
@@ -190,7 +190,7 @@ const features = [
             </section>
         </main>
 
-         <footer class="border-t border-gray-100 bg-white px-6 py-12">
+         <footer class="border-t border-gray-100 bg-white px-6 py-6">
             <div class="mx-auto max-w-7xl text-center">
                 <div class="mb-6 flex justify-center gap-6">
                     <a href="https://facebook.com/iccheghuri.tours" target="_blank" class="text-gray-400 hover:text-[#ff9542]">
