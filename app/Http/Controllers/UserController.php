@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Str;
 
 class UserController extends Controller
 {
@@ -18,7 +20,14 @@ class UserController extends Controller
 
     public function show(User $user){
         return Inertia::render('admin/details/User',[
-            'data' => $user
+            'data' => $user,
+            'mode' => 'edit'
+        ]);
+    }
+
+    public function create(){
+        return Inertia::render("admin/details/User",[
+            'mode'=>'create'
         ]);
     }
     
@@ -29,11 +38,29 @@ class UserController extends Controller
             'points' => 'required|integer',
             'completed_tours' => 'required|integer',
             'phone' => 'required|string|size:11',
+            'role' => 'required|string|in:admin,user',
         ]);
         $user->update($validated);
 
         return redirect()->route('admin.users.index')
         ->with('message', 'User Updated successfully');
+    }
+    public function store(Request $request){
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'points' => 'required|integer',
+            'completed_tours' => 'required|integer',
+            'phone' => 'required|string|size:11',
+            'role' => 'required|string|in:admin,user',
+        ]);
+        $validated['email_verified_at'] = now();
+        $validated['slug'] = Str::random(9);
+        $validated['password'] = Hash::make(Str::random(9));
+        User::create($validated);
+
+        return redirect()->route('admin.users.index')
+        ->with('message', 'User created successfully');
     }
     public function destroy(User $user){
         $user->delete();

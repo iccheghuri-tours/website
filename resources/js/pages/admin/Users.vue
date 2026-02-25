@@ -7,9 +7,21 @@ const props = defineProps({ data: Array });
 
 <template>
   <AdminLayout>
-    <h1 class="text-[25px] font-bold text-black">Admin/Users</h1>
-    <p class="text-black mb-6">Current Users:</p>
-    
+    <div class="flex items-start justify-between mb-6">
+      <div>
+        <h1 class="text-[25px] font-bold text-black">Admin/Users</h1>
+        <p class="text-black">Current Users:</p>
+      </div>
+
+      <Link 
+        href="/admin/users/create" 
+        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow-sm transition-colors duration-200 font-semibold flex items-center gap-2"
+      >
+        <span class="text-xl leading-none">+</span>
+        <span>Add User</span>
+      </Link>
+    </div>
+
     <div class="flex items-center justify-between px-4 mb-2 text-xs font-bold uppercase tracking-wider text-gray-500">
       <span class="flex-1">Name</span>
       <span class="flex-1 px-4">Email Address</span>
