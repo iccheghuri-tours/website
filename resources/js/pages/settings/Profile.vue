@@ -168,7 +168,7 @@ const submitForm = () => {
                         </button>
                     </div>
 
-                <div class="mt-6 grid gap-4 sm:grid-cols-1">
+                <div class="mt-6 grid gap-4 sm:grid-cols-1" v-if="user.role === 'user'">
                     <div class="flex flex-col gap-2">
                         <Label for="request">Your Request</Label>
                         <textarea 
