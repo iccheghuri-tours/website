@@ -3,6 +3,7 @@
 namespace App\Concerns;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 trait ProfileValidationRules
@@ -48,10 +49,17 @@ trait ProfileValidationRules
                 : Rule::unique(User::class)->ignore($userId),
         ];
     }
+
+
     protected function phoneRules(): array
     {
-        return ['required', 'string', 'size:11', 'unique:users,phone']; // adjust as needed
-        // optional: add regex for stricter validation:
-        // return ['required', 'string', 'max:15', 'regex:/^\+?[0-9]{7,15}$/'];
+        return [
+            'required',
+            'string',
+            'size:11',
+            Rule::unique('users', 'phone')->ignore(Auth::id()), // safe if Auth::id() is null
+            // optional: stricter format
+            // 'regex:/^\+?[0-9]{11}$/'
+        ];
     }
 }
