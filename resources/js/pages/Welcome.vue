@@ -354,7 +354,7 @@ const features = [
             </section>
         </main>
 
-        <footer class="bg-[#1b1b18] pt-10 pb-10 text-white">
+        <footer class="bg-[#1b1b18] pt-10 pb-10 text-white md:pt-20">
             <div class="mx-auto max-w-7xl px-6">
                 <div class="grid grid-cols-1 gap-12 lg:grid-cols-4 lg:gap-8">
                     <div class="space-y-6">
@@ -417,6 +417,7 @@ const features = [
                                 <a
                                     href="https://packages.iccheghuritours.com"
                                     class="transition-colors hover:text-[#ff9542]"
+                                    target="_blank"
                                     >সব প্যাকেজ</a
                                 >
                             </li>
@@ -424,6 +425,7 @@ const features = [
                                 <a
                                     href="https://www.facebook.com/groups/iccheghuri.community"
                                     class="transition-colors hover:text-[#ff9542]"
+                                    target="_blank"
                                     >কমিউনিটি
                                 </a>
                             </li>
@@ -431,6 +433,7 @@ const features = [
                                 <a
                                     href="https://maps.app.goo.gl/7WAbKJ4VVrNTGVFq9"
                                     class="transition-colors hover:text-[#ff9542]"
+                                    target="_blank"
                                     >আমাদের রিভিউ</a
                                 >
                             </li>
@@ -487,7 +490,9 @@ const features = [
                     </div>
                 </div>
 
-                <div class="mt-10 border-t border-white/5 pt-5 text-center">
+                <div
+                    class="mt-10 border-t border-white/5 pt-5 text-center md:mt-15 md:pt-10"
+                >
                     <p class="text-xs font-medium text-gray-500">
                         &copy; 2026 ইচ্ছেঘুড়ি (Iccheghuri). All Rights
                         Reserved. <br class="sm:hidden" />
