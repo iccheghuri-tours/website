@@ -30,6 +30,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'phone' => $input['phone'],
             'password' => $input['password'],
+            'primary_ip' => request()->ip(),
             'slug' => Str::random(9),
         ]);
     }

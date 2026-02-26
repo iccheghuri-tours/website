@@ -26,12 +26,16 @@ class SendMailAfterNewLogin
         //
         $user = $event->user;
         $ipAddress = request()->ip();
-        if ($user->hasVerifiedEmail()){
+        
+
+        if ($user->hasVerifiedEmail() && $ipAddress != $user->last_ip && $ipAddress != $user->primary_ip ){
             Mail::to($user->email)->send(new SimpleMail([
             'subject' => 'New Login Detected',
             'message' => 'A new login to your account was detected from IP address: ' . $ipAddress . '. If this was not you, please secure your account immediately.',
         ]));
         }
+        $user->last_ip = $ipAddress;
+        $user->save();
         
     }
 }

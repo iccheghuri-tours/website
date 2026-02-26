@@ -31,6 +31,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'completed_tours',
         'role',
         'email_verified_at',
+        'primary_ip',
+        'last_ip',
+
     ];
 
     /**
