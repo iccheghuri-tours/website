@@ -176,8 +176,8 @@ const isUploading = ref(false);
         <div class="pt-4">
           <button 
             type="submit" 
-            v-if="!isUploading"
-            class="inline-flex items-center justify-center px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-semibold rounded-md shadow transition-colors active:transform active:scale-[0.98]"
+            :disabled="isUploading"
+            class="inline-flex items-center justify-center px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-semibold rounded-md shadow transition-colors active:transform active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {{ props.mode === 'edit' ? 'Edit Partner' : 'Create partner' }}
           </button>
@@ -188,8 +188,9 @@ const isUploading = ref(false);
       <button 
   type="button"
   @click="handleDelete"
-  class="px-4 py-2 text-sm font-semibold text-white bg-red-500 rounded-md mt-2"
+  class="px-4 py-2 text-sm font-semibold text-white bg-red-500 rounded-md mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
   v-if="props.mode === 'edit'"
+  :disabled="isUploading"
 >
   Delete partner
 </button>
