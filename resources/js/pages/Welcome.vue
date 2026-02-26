@@ -354,7 +354,7 @@ const features = [
             </section>
         </main>
 
-        <footer class="bg-[#1b1b18] pt-20 pb-10 text-white">
+        <footer class="bg-[#1b1b18] pt-10 pb-10 text-white">
             <div class="mx-auto max-w-7xl px-6">
                 <div class="grid grid-cols-1 gap-12 lg:grid-cols-4 lg:gap-8">
                     <div class="space-y-6">
@@ -440,7 +440,7 @@ const features = [
                     <div>
                         <h4 class="mb-6 text-lg font-bold">যোগাযোগ</h4>
                         <ul class="space-y-4 text-sm text-gray-400">
-                            <li class="flex items-start gap-3">
+                            <li class="flex items-center gap-3">
                                 <Icon
                                     icon="solar:map-point-bold"
                                     class="mt-1 h-5 w-5 text-[#ff9542]"
@@ -487,7 +487,7 @@ const features = [
                     </div>
                 </div>
 
-                <div class="mt-20 border-t border-white/5 pt-10 text-center">
+                <div class="mt-10 border-t border-white/5 pt-5 text-center">
                     <p class="text-xs font-medium text-gray-500">
                         &copy; 2026 ইচ্ছেঘুড়ি (Iccheghuri). All Rights
                         Reserved. <br class="sm:hidden" />
