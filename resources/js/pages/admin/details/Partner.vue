@@ -2,6 +2,7 @@
 import AdminLayout from '@/pages/AdminLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 import axios from 'axios';
+import { ref } from 'vue';
 
   const props = defineProps({
     data: Object,
@@ -38,7 +39,7 @@ import axios from 'axios';
 
 }
   const handleDelete = () =>{
-    if (confirm("Delete this user?")) {
+    if (confirm("Delete this partner?")) {
     partner.delete(`/admin/partners/${props.data.id}`);
   }
   }
@@ -49,11 +50,24 @@ const handleImageChange = async (event) => {
   const body = new FormData();
   body.append('image',file);
   body.append('delete',partner.image);
-  const {data} = await axios.post('/admin/upload-image',body);
-  partner.image = data.path;
+  try{
+    isUploading.value = true;
+
+    const {data} = await axios.post('/admin/upload-image',body);
+    partner.image = data.path;
+  }catch (error){
+    alert(error.response?.data?.message || 'Image upload failed');
+  }finally{
+    isUploading.value = false;
+
+  }
+  
 
 
 };
+
+const isUploading = ref(false);
+
 
 </script>
 
@@ -127,19 +141,34 @@ const handleImageChange = async (event) => {
   <div class="flex flex-col gap-1.5 sm:col-span-1">
   <label class="text-sm font-medium text-gray-600">Partner Image</label>
   
-  <div v-if="partner.image" class="mb-2">
+  <div class="relative h-20 w-20 mb-2 flex items-center justify-center border border-gray-200 rounded-md bg-gray-50 overflow-hidden">
+    
+    <div v-if="isUploading" class="flex items-center justify-center">
+      <svg class="animate-spin h-6 w-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+    </div>
+
     <img 
+      v-else-if="partner.image"
       :src="`/storage/${partner.image}`"
       alt="Partner Preview" 
-      class="h-20 w-20 object-cover rounded-md border border-gray-200"
+      class="h-full w-full object-cover"
     >
+
+    <div v-else class="text-gray-300">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    </div>
   </div>
 
   <input 
     type="file" 
     @change="handleImageChange"
-
-    class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+    :disabled="isUploading"
+    class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
   >
 </div>
 </div>
@@ -147,6 +176,7 @@ const handleImageChange = async (event) => {
         <div class="pt-4">
           <button 
             type="submit" 
+            v-if="!isUploading"
             class="inline-flex items-center justify-center px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-semibold rounded-md shadow transition-colors active:transform active:scale-[0.98]"
           >
             {{ props.mode === 'edit' ? 'Edit Partner' : 'Create partner' }}
