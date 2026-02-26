@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomRequestController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoyaltiController;
 use App\Http\Controllers\PointDealController;
@@ -34,4 +35,9 @@ Route::prefix('/admin')->middleware(['auth', AdminMiddleware::class])->name('adm
     Route::resource('/partners',RegularDealController::class);
     Route::resource('/offers',PointDealController::class);
     Route::post('/upload-image', [ImageController::class, 'store'])->name('image.store');
+    Route::resource('/custom-requests', CustomRequestController::class)->except('store');
+});
+
+Route::middleware('auth')->group(function (){
+    Route::post('/custom-requests', [CustomRequestController::class, 'store']);
 });

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Form, Head, Link, router, usePage } from '@inertiajs/vue3';
+import { Form, Head, Link, router, useForm, usePage } from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
@@ -45,6 +45,23 @@ const handleLogout = () => {
     router.flushAll();
     router.post(logout());
 };
+const requestForm = useForm({
+    request: ''
+});
+const submitForm = () => {
+    if(!requestForm.request.trim()){
+        alert("Please type your request");
+        return;
+    }
+
+    requestForm.post('/custom-requests', {
+        onSuccess: () => {
+            alert("We have received your request");
+            requestForm.reset();
+        },
+        onError: (errors) => alert(Object.values(errors)[0])
+    });
+}
 </script>
 
 <template>
@@ -150,6 +167,21 @@ const handleLogout = () => {
                             <ChevronRight class="h-4 w-4 text-blue-400 transition-transform group-hover:translate-x-1" />
                         </button>
                     </div>
+
+                <div class="mt-6 grid gap-4 sm:grid-cols-1">
+                    <div class="flex flex-col gap-2">
+                        <Label for="request">Your Request</Label>
+                        <textarea 
+                            id="request" 
+                            name="request" 
+                            rows="4" 
+                            placeholder="Describe any request, such as a points increase or other technical issue." 
+                            class="border rounded px-3 py-2 resize-none"
+                            v-model="requestForm.request"
+                        ></textarea>
+                    </div>
+                    <Button @click="submitForm" class="w-full justify-center mt-2">Submit Request</Button>
+                </div>
 
                     <div class="pt-4">
                         <Button 
