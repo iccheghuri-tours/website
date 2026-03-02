@@ -16,6 +16,7 @@ const partner = useForm({
     facebook: props.data?.facebook,
     discount_percentage: props.data?.discount_percentage,
     image: props.data?.image,
+    website: props.data?.website,
 });
 
 const handleSubmit = () => {
@@ -112,7 +113,7 @@ const isUploading = ref(false);
 
                     <div class="flex flex-col gap-1.5">
                         <label class="text-sm font-medium text-gray-600"
-                            >Location</label
+                            >Location (Optional)</label
                         >
                         <input
                             v-model="partner.location"
@@ -123,7 +124,18 @@ const isUploading = ref(false);
 
                     <div class="flex flex-col gap-1.5">
                         <label class="text-sm font-medium text-gray-600"
-                            >Facebook</label
+                            >Website (Optional)</label
+                        >
+                        <input
+                            v-model="partner.website"
+                            type="text"
+                            class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm transition-all outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-medium text-gray-600"
+                            >Facebook (Optional)</label
                         >
                         <input
                             v-model="partner.facebook"
@@ -134,7 +146,7 @@ const isUploading = ref(false);
 
                     <div class="flex flex-col gap-1.5">
                         <label class="text-sm font-medium text-gray-600"
-                            >Phone</label
+                            >Phone (Optional)</label
                         >
                         <input
                             v-model="partner.phone"
@@ -145,7 +157,7 @@ const isUploading = ref(false);
 
                     <div class="flex flex-col gap-1.5">
                         <label class="text-sm font-medium text-gray-600"
-                            >Discount Percentage</label
+                            >Discount Title</label
                         >
                         <input
                             v-model="partner.discount_percentage"

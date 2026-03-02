@@ -36,9 +36,10 @@ class RegularDealController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'details' => 'required|string',
-            'phone' => 'required|string|size:11|unique:regular_deals,phone,' . $partner->id,
-            'facebook' => 'required|url',
-            'location' => 'required|url',
+            'phone' => 'sometimes|nullable|string|size:11|unique:regular_deals,phone,' . $partner->id,
+            'facebook' => 'sometimes|nullable|url',
+            'location' => 'sometimes|nullable|url',
+            'website' => 'sometimes|nullable|url',
             'discount_percentage' => 'required|string',
             'image' => 'required|string',
         ]);
@@ -53,9 +54,10 @@ class RegularDealController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'details' => 'required|string',
-            'phone' => 'required|string|size:11|unique:regular_deals,phone',
-            'facebook' => 'required|url',
-            'location' => 'required|url',
+            'phone' => 'sometimes|nullable|string|size:11|unique:regular_deals,phone',
+            'facebook' => 'sometimes|nullable|url',
+            'location' => 'sometimes|nullable|url',
+            'website' => 'sometimes|nullable|url',
             'discount_percentage' => 'required|integer',
             'image' => 'required|string',
         ]);

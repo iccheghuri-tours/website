@@ -10,6 +10,7 @@ defineProps({
     location: String,
     facebook: String,
     phone: String,
+    website: String,
 });
 
 const isSheetOpen = ref(false);
@@ -67,6 +68,7 @@ const openSheet = () => {
             :facebook="facebook"
             :location="location"
             :details="details"
+            :website="website"
             @close="isSheetOpen = false"
         />
     </div>

@@ -80,36 +80,56 @@
                         ></div>
                     </div>
 
-                    <div class="mb-10 grid grid-cols-3 gap-4">
+                    <div
+                        class="mb-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+                    >
                         <a
+                            v-if="location"
                             :href="location"
                             target="_blank"
-                            class="flex flex-col items-center justify-center rounded-2xl border border-orange-100 bg-orange-50/30 p-5 transition-all hover:border-[#f39221]/40 hover:bg-orange-50 active:scale-95"
+                            class="flex min-w-[80px] flex-1 flex-col items-center justify-center rounded-2xl border border-orange-100 bg-orange-50/30 p-4 transition-all hover:border-[#f39221]/40 hover:bg-orange-50 active:scale-95 sm:p-5"
                         >
                             <span class="mb-2 text-2xl">📍</span>
                             <span
-                                class="text-[11px] font-bold tracking-wider text-slate-500 uppercase"
+                                class="text-[10px] font-bold tracking-wider text-slate-500 uppercase sm:text-[11px]"
                                 >Map</span
                             >
                         </a>
+
                         <a
+                            v-if="facebook"
                             :href="facebook"
                             target="_blank"
-                            class="flex flex-col items-center justify-center rounded-2xl border border-orange-100 bg-orange-50/30 p-5 transition-all hover:border-[#f39221]/40 hover:bg-orange-50 active:scale-95"
+                            class="flex min-w-[80px] flex-1 flex-col items-center justify-center rounded-2xl border border-orange-100 bg-orange-50/30 p-4 transition-all hover:border-[#f39221]/40 hover:bg-orange-50 active:scale-95 sm:p-5"
                         >
                             <span class="mb-2 text-2xl">🌐</span>
                             <span
-                                class="text-[11px] font-bold tracking-wider text-slate-500 uppercase"
+                                class="text-[10px] font-bold tracking-wider text-slate-500 uppercase sm:text-[11px]"
                                 >Social</span
                             >
                         </a>
+
                         <a
+                            v-if="website"
+                            :href="website"
+                            target="_blank"
+                            class="flex min-w-[80px] flex-1 flex-col items-center justify-center rounded-2xl border border-orange-100 bg-orange-50/30 p-4 transition-all hover:border-[#f39221]/40 hover:bg-orange-50 active:scale-95 sm:p-5"
+                        >
+                            <span class="mb-2 text-2xl">💻</span>
+                            <span
+                                class="text-[10px] font-bold tracking-wider text-slate-500 uppercase sm:text-[11px]"
+                                >Website</span
+                            >
+                        </a>
+
+                        <a
+                            v-if="phone"
                             :href="'tel:' + phone"
-                            class="flex flex-col items-center justify-center rounded-2xl border border-orange-100 bg-orange-50/30 p-5 transition-all hover:border-[#f39221]/40 hover:bg-orange-50 active:scale-95"
+                            class="flex min-w-[80px] flex-1 flex-col items-center justify-center rounded-2xl border border-orange-100 bg-orange-50/30 p-4 transition-all hover:border-[#f39221]/40 hover:bg-orange-50 active:scale-95 sm:p-5"
                         >
                             <span class="mb-2 text-2xl">📞</span>
                             <span
-                                class="text-[11px] font-bold tracking-wider text-slate-500 uppercase"
+                                class="text-[10px] font-bold tracking-wider text-slate-500 uppercase sm:text-[11px]"
                                 >Call</span
                             >
                         </a>
@@ -164,9 +184,10 @@ const props = defineProps({
             'This discount is applicable on all full-priced merchandise at participating city outlets. Offer cannot be combined with other seasonal sales or clearance items.',
     },
     image: { type: String, default: 'https://picsum.photos/200/300' },
-    location: { type: String, default: 'https://maps.google.com' },
-    phone: { type: String, default: '1234567890' },
-    facebook: { type: String, default: 'https://facebook.com/sample' },
+    location: { type: String },
+    phone: { type: String },
+    facebook: { type: String },
+    website: { type: String },
     discountAmount: { type: String, default: '10' },
     show: { type: Boolean, required: true },
 });
