@@ -66,7 +66,7 @@ const filteredPartners = computed(() => {
         </span>
 
         <span class="flex-1 text-gray-700 text-sm truncate px-4">
-          {{ partner.discount_percentage }}%
+          {{ partner.discount_percentage }}
         </span>
 
         <span class="flex-1 text-right text-gray-600 font-mono text-xs sm:text-sm">
