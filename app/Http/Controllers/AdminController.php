@@ -47,7 +47,7 @@ class AdminController extends Controller
             Mail::to($email)->send(new SimpleMail([
                 'subject'   => $request->subject,
                 'message'   => $request->body,
-                'image'     => asset($request->image),
+                'image' => asset('storage/' . $request->image),
                 'btn_label' => $request->btn_label,
                 'btn_link'  => $request->btn_link,
                 'btn_color'  => $request->btn_color,
