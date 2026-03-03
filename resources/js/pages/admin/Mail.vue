@@ -21,9 +21,10 @@ const handleClick = () => {
             alert('Mail sent successfully');
             loadingText.value = 'Mails sent successfully';
         },
-        onError: () => {
-            alert('Invalid Input');
-            loadingText.value = 'Invalid Input';
+        onError: (errors) => {
+            const firstError = Object.values(errors)[0];
+            alert(firstError);
+            loadingText.value = firstError;
         },
     });
 };
