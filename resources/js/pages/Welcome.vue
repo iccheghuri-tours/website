@@ -79,7 +79,33 @@ const features = [
 </script>
 
 <template>
-    <Head title="ইচ্ছেঘুড়ি - স্বল্প বাজেটে সারা বাংলাদেশ ঘুরি" />
+    <Head>
+        title="ইচ্ছেঘুড়ি - স্বল্প বাজেটে সারা বাংলাদেশ ঘুরি"
+        <meta
+            name="description"
+            content="ইচ্ছেঘুড়ি রংপুরের একটি বিশ্বস্ত বাজেট ট্যুর এজেন্সি। দেশ ও বিদেশ ভ্রমণের সেরা প্যাকেজ, ভিসা প্রসেসিং, এয়ার টিকিট ও হোটেল বুকিং সেবা।"
+        />
+        <meta
+            name="keywords"
+            content="Budget tour Bangladesh, Rangpur travel agency, tour package Bangladesh, honeymoon package, visa processing Bangladesh, Iccheghuri"
+        />
+        <meta name="author" content="Iccheghuri Tours" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            property="og:title"
+            content="ইচ্ছেঘুড়ি - Budget Friendly Tour Organizer"
+        />
+        <meta
+            property="og:description"
+            content="স্বল্প বাজেটে সারা বাংলাদেশ ঘুরুন ইচ্ছেঘুড়ির সাথে।"
+        />
+        <meta
+            property="og:image"
+            content="https://iccheghuritours.com/images/cover.jpg"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://iccheghuritours.com" />
+    </Head>
 
     <div
         class="min-h-screen bg-[#FAFAFA] font-sans text-[#1b1b18] selection:bg-[#ff9542]/30"
