@@ -11,41 +11,58 @@ use Str;
 class UserController extends Controller
 {
     //
-    public function index(){
-         $users = User::orderBy('created_at','desc')->get();
-        return Inertia::render('admin/Users',[
+    public function index()
+    {
+        $users = User::orderBy('created_at', 'desc')->get();
+        return Inertia::render('admin/Users', [
             'data' => $users
         ]);
     }
 
-    public function show(User $user){
-        return Inertia::render('admin/details/User',[
+    public function show(User $user)
+    {
+        return Inertia::render('admin/details/User', [
             'data' => $user,
             'mode' => 'edit'
         ]);
     }
 
-    public function create(){
-        return Inertia::render("admin/details/User",[
-            'mode'=>'create'
+    public function create()
+    {
+        return Inertia::render("admin/details/User", [
+            'mode' => 'create'
         ]);
     }
-    
-    public function update(Request $request, User $user){
+
+    public function update(Request $request, User $user)
+    {
         $validated = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'points' => 'required|integer',
             'completed_tours' => 'required|integer',
-            'phone' => 'required|string|size:11|unique:users,phone,'.$user->id,
+            'phone' => 'required|string|size:11|unique:users,phone,' . $user->id,
             'role' => 'required|string|in:admin,user',
+            'email_verified' => 'required|boolean',
         ]);
+
+        if ($validated['email_verified']) {
+            if ($user->email_verified_at === null) {
+                $validated['email_verified_at'] = now();
+            }
+        } else {
+            $validated['email_verified_at'] = null;
+        }
+
+        unset($validated['email_verified']);
+
         $user->update($validated);
 
         return redirect()->route('admin.users.index')
-        ->with('message', 'User Updated successfully');
+            ->with('message', 'User Updated successfully');
     }
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
@@ -60,11 +77,12 @@ class UserController extends Controller
         User::create($validated);
 
         return redirect()->route('admin.users.index')
-        ->with('message', 'User created successfully');
+            ->with('message', 'User created successfully');
     }
-    public function destroy(User $user){
+    public function destroy(User $user)
+    {
         $user->delete();
         return redirect()->route('admin.users.index')
-        ->with('message', 'User deleted successfully');
+            ->with('message', 'User deleted successfully');
     }
 }
