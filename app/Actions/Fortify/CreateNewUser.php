@@ -32,6 +32,8 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $input['password'],
             'primary_ip' => request()->ip(),
             'slug' => Str::random(9),
+            'otp' => random_int(1000, 9999),
+            'otp_expires_at' => now()->addMinutes(10),
         ]);
     }
 }

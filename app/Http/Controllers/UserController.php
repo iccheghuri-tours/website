@@ -85,4 +85,49 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')
             ->with('message', 'User deleted successfully');
     }
+    public function verifyEmail(Request $request)
+    {
+        $validated = $request->validate([
+            'otp' => 'required|digits:4',
+        ]);
+
+        $user = $request->user();
+
+        // Check expiry first
+        if (!$user->otp_expires_at || $user->otp_expires_at->isPast()) {
+            return back()->withErrors(['otp' => 'OTP has expired']);
+        }
+
+        // Check OTP match
+        if ($user->otp !== $validated['otp']) {
+            return back()->withErrors(['otp' => 'Invalid OTP']);
+        }
+
+        // Success
+        $user->markEmailAsVerified();
+        $user->otp = null;
+        $user->otp_expires_at = null;
+        $user->save();
+
+        return redirect()->route('dashboard')
+            ->with('message', 'Email verified successfully');
+    }
+
+
+    public function resendOtp(Request $request){
+        $user = $request->user();
+
+        if ($user->hasVerifiedEmail()) {
+            return redirect()->route('dashboard');
+        }
+
+        $user->otp = random_int(1000, 9999);
+        $user->otp_expires_at = now()->addMinutes(10);
+        $user->save();
+
+        $user->sendEmailVerificationNotification();
+
+        return back()->with('status', 'A new verification code has been sent!');
+
+    }
 }

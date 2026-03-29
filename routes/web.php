@@ -41,3 +41,5 @@ Route::prefix('/admin')->middleware(['auth', AdminMiddleware::class])->name('adm
 Route::middleware('auth')->group(function (){
     Route::post('/custom-requests', [CustomRequestController::class, 'store']);
 });
+Route::post('/verify-email', [UserController::class, 'verifyEmail'])->middleware(['auth', 'throttle:6,1']);
+Route::post('/resend-otp', [UserController::class, 'resendOtp'])->middleware(['auth', 'throttle:2,1']);
