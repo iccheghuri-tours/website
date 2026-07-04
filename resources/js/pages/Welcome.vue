@@ -235,7 +235,7 @@ const features = [
                                 class="flex flex-col gap-4 sm:flex-row lg:justify-start"
                             >
                                 <a
-                                    href="https://packages.iccheghuritours.com"
+                                    href="https://ecommerce.iccheghuritours.com"
                                     target="_blank"
                                     class="group flex items-center justify-center gap-3 rounded-2xl bg-[#ff9542] px-8 py-4 text-lg font-bold text-white shadow-2xl shadow-[#ff9542]/40 transition-all hover:scale-[1.03] hover:bg-[#f38630]"
                                 >
@@ -435,7 +435,7 @@ const features = [
                             </li>
                             <li>
                                 <a
-                                    href="https://packages.iccheghuritours.com"
+                                    href="https://ecommerce.iccheghuritours.com"
                                     class="transition-colors hover:text-[#ff9542]"
                                     target="_blank"
                                     >সব প্যাকেজ</a
